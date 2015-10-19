@@ -29,7 +29,7 @@ abstract class AbstractField implements FieldInterface
     /**
      * @inheritDoc
      */
-    abstract public function extractValue($inputIteration);
+    abstract public function extractValue($iterationInput);
 
     /**
      * Constructor

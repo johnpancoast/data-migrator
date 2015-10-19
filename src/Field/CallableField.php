@@ -46,8 +46,8 @@ class CallableField extends AbstractField
     /**
      * @inheritDoc
      */
-    public function extractValue($inputIteration)
+    public function extractValue($iterationInput)
     {
-        return call_user_func($this->handler, $inputIteration);
+        return call_user_func($this->handler, $iterationInput);
     }
 }

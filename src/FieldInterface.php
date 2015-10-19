@@ -39,9 +39,9 @@ interface FieldInterface
     public function setConstraints(array $constraints);
 
     /**
-     * Given an input iteration, get the value for this field
-     * @param $inputIteration
+     * Given one iteration of input, get the value for this field
+     * @param $iterationInput
      * @return mixed
      */
-    public function extractValue($inputIteration);
+    public function extractValue($iterationInput);
 }
