@@ -44,8 +44,9 @@ abstract class AbstractCsvModel implements ModelInterface
     /**
      * @inheritDoc
      *
-     * This is the minimum requirement to make a migration function but your extension will most likely need to extend
-     * {@see self::endIteration()} and/or {@see self::end()} to define your migration functionality.
+     * This is the minimum requirement to make a migration function with our class structure but your extension
+     * will most likely need to extend {@see self::endIteration()} and/or {@see self::end()} to define your
+     * specific migration functionality.
      */
     abstract public function getFields();
 
