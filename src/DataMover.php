@@ -7,6 +7,8 @@
  */
 
 namespace Shideon\DataMover;
+use Symfony\Component\Validator\Validation;
+use Symfony\Component\Validator\Validator;
 
 /**
  * Shideon\DataMover\DataMover
@@ -24,6 +26,16 @@ class DataMover implements DataMoverInterface
      * @var \Iterator
      */
     protected $data;
+
+    /**
+     * @var array
+     */
+    protected $validationErrors = [];
+
+    /**
+     * @var Validator
+     */
+    protected $validator;
 
     /**
      * Constructor
@@ -65,6 +77,12 @@ class DataMover implements DataMoverInterface
             throw new \LogicException('Must have data to iterate before running');
         }
 
+        if (!$this->validator) {
+            $this->validator = Validation::createValidatorBuilder()
+                ->addMethodMapping('loadValidatorMetadata')
+                ->getValidator();
+        }
+
         foreach ($this->data as $iterationInput) {
             $this->handleIteration($iterationInput);
         }
@@ -76,15 +94,27 @@ class DataMover implements DataMoverInterface
     protected function handleIteration($iterationInput)
     {
         $iterationInput = $this->model->createIterationInput($iterationInput);
-        $iterationOutput = new \StdClass();
+        $iterationOutput = [];
 
         $this->model->beginIteration($iterationInput, $iterationOutput);
 
         foreach ($this->model->getFields() as $field) {
-            $iterationOutput->{$field->getName()} = $field->extractValue($iterationInput);
-        }
+            $name = $field->getName();
 
-        // @todo validation
+            // set value of output field by extracting using field
+            $iterationOutput[$name] = $field->extractValue($iterationInput);
+
+            $errors = $this->validator->validateValue(
+                $iterationOutput[$name],
+                $field->getConstraints()
+            );
+
+            if (count($errors) > 0) {
+                $this->validationErrors[$name] = $errors;
+            }
+
+            // @todo determine how validation errors are handled
+        }
 
         $this->model->endIteration($iterationOutput);
     }
