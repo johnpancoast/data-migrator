@@ -37,7 +37,8 @@ interface ModelInterface
     /**
      * Logic to run at the beginning of an iteration
      *
-     * This method is called at the beginning of an iteration before field validation.
+     * This method is called at the beginning of an iteration after {@see self::createIterationInput()} and
+     * before field validation.
      *
      * Note that the parameters are passed in by reference and can be changed, however,
      * $iterationOutput will *always* be overwritten by internal logic handling field input
