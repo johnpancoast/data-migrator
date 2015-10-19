@@ -83,9 +83,13 @@ class DataMover implements DataMoverInterface
                 ->getValidator();
         }
 
+        $this->model->begin();
+
         foreach ($this->data as $iterationInput) {
             $this->handleIteration($iterationInput);
         }
+
+        $this->model->end();
     }
 
     /**

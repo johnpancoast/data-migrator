@@ -24,10 +24,19 @@ interface ModelInterface
     public function getFields();
 
     /**
+     * Logic to be run before iterating over input data
+     *
+     * This is the first method to be run re: iterating input data
+     *
+     * @return mixed
+     */
+    public function begin();
+
+    /**
      * Given one iteration of input, create and return an input iteration data structure of your choice
      *
-     * This method will be run first by the data mover to create the iteration input the model's logic
-     * expects.
+     * This method is called after {@see self::begin()} and before {@see::self::beginIteration()} to define
+     * the input data for this iteration.
      *
      * @param mixed $iterationData
      * @return mixed
@@ -52,11 +61,19 @@ interface ModelInterface
     /**
      * Logic to run at the end of an iteration
      *
-     * This is run after field validation has succeeded. The $iterationOutput object will be an
-     * instance of \StdClass with public properties matching those defined in {@see self::getFields()}
-     * This might be the method where you save your final output data to a database for example.
+     * This is run after field validation has succeeded. $iterationOutput will be an array with values
+     * matching those defined in {@see self::getFields()}. This method is useful for handling the end
+     * of each iteration. Ppersisting an object or adding something to a transaction are examples of
+     * things you might do here.
      *
      * @param $iterationOutput Iteration output after field input and validation have occurred
      */
     public function endIteration($iterationOutput);
+
+    /**
+     * Logic to run after all iterations
+     *
+     * Writing your transaction or doing some post cleanup are examples of things you might do here.
+     */
+    public function end();
 }
