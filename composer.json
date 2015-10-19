@@ -1,0 +1,14 @@
+{
+  "name": "shideon/data-mover",
+  "description": "PHP lib for moving data",
+  "license": "mit",
+  "authors": [
+    {
+      "name": "John Pancoast",
+      "email": "johnpancoaster@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": { "Shideon\\DataMover\\": "src" }
+  }
+}
