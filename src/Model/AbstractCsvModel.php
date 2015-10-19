@@ -43,13 +43,11 @@ abstract class AbstractCsvModel implements ModelInterface
 
     /**
      * @inheritDoc
+     *
+     * This is the minimum requirement to make a migration function but your extension will most likely need to extend
+     * {@see self::endIteration()} and/or {@see self::end()} to define your migration functionality.
      */
     abstract public function getFields();
-
-    /**
-     * @inheritDoc
-     */
-    abstract public function endIteration($iterationOutput);
 
     /**
      * Constructor
@@ -77,10 +75,37 @@ abstract class AbstractCsvModel implements ModelInterface
 
     /**
      * @inheritDoc
+     * @see ModelInterface::begin()
+     */
+    public function begin()
+    {
+        // nothing to do by default. override at will.
+    }
+
+    /**
+     * @inheritDoc
+     * @see ModelInterface::end()
+     */
+    public function end()
+    {
+        // nothing to do by default. override at will.
+    }
+
+    /**
+     * @inheritDoc
      * @see ModelInterface::beginIteration()
      */
     public function beginIteration(&$iterationInput, &$iterationOutput)
     {
-        // nothing to do by default, override at will.
+        // nothing to do by default. override at will.
+    }
+
+    /**
+     * @inheritDoc
+     * @see ModelInterface::endIteration()
+     */
+    public function endIteration($iterationOutput)
+    {
+        // nothing to do by default. override at will.
     }
 }
