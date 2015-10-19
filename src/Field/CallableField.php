@@ -19,14 +19,14 @@ class CallableField extends AbstractField
 {
     /**
      * Callable for handling logic to retrieve data for this field from
-     * an input object.
+     * an iteration of input data
      *
-     * $handler has the following signature
+     * This callable should share the same signature as {@see Shideon\DataMover\FieldInterface::extractValue()}.
      *
-     *    @#param mixed $inputIteration One iteration of input
-     *    @#return mixed The value to be assigned to the field being added
+     *    @#param mixed $iterationInput One iteration of input to pull the specific value from
+     *    @#return mixed The value to be assigned to the field
      *
-     * @see FieldInterface
+     * @see FieldInterface::extractValue()
      * @var callable
      */
     private $handler;

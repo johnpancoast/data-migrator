@@ -17,6 +17,9 @@ use Shideon\DataMover\AbstractField;
  */
 class CsvField extends AbstractField
 {
+    /**
+     * @var int Position of this field in an iteration of input data
+     */
     private $fieldPosition;
 
     /**

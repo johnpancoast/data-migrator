@@ -29,19 +29,20 @@ interface FieldInterface
     public function setName($name);
 
     /**
-     * @return Symfony\Component\Validator\Constraint[]
+     * @return \Symfony\Component\Validator\Constraint[] An array of symfony validator constraints
      */
     public function getConstraints();
 
     /**
-     * @param Symfony\Component\Validator\Constraint[] $constraints An array of symfony validator constraints
+     * @param \Symfony\Component\Validator\Constraint[] $constraints An array of symfony validator constraints
      */
     public function setConstraints(array $constraints);
 
     /**
      * Given one iteration of input, get the value for this field
-     * @param $iterationInput
-     * @return mixed
+     *
+     * @param mixed $iterationInput One iteration of input to pull the specific value from
+     * @return mixed The value to be assigned to the field
      */
     public function extractValue($iterationInput);
 }
