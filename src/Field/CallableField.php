@@ -6,14 +6,16 @@
  * @license MIT
  */
 
-namespace Shideon\DataMover;
+namespace Shideon\DataMover\Field;
+
+use Shideon\DataMover\AbstractField;
 
 /**
- * Shideon\DataMover\FieldCallable
+ * Shideon\DataMover\Field\CallableField
  *
  * @author John Pancoast <johnpancoaster@gmail.com>
  */
-class FieldCallable extends AbstractField
+class CallableField extends AbstractField
 {
     /**
      * Callable for handling logic to retrieve data for this field from
