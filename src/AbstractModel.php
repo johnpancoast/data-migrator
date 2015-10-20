@@ -9,7 +9,6 @@
 namespace SpamRoast\DataMigrator;
 
 use SpamRoast\DataMigrator\Exception\HaltableModelIterationException;
-use Symfony\Component\Validator\ConstraintViolationListInterface;
 
 /**
  * SpamRoast\DataMigrator\AbstractModel

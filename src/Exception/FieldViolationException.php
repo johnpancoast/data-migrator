@@ -8,8 +8,6 @@
 
 namespace SpamRoast\DataMigrator\Exception;
 
-use Symfony\Component\Validator\ConstraintViolationListInterface;
-
 /**
  * SpamRoast\DataMigrator\Exception\FieldViolationException
  *
