@@ -1,5 +1,5 @@
 {
-  "name": "spamroast/data-migrator",
+  "name": "johnpancoast/data-migrator",
   "description": "A PHP lib providing abstractions and structure to migrate data from an input to an output",
   "license": "mit",
   "authors": [
@@ -13,6 +13,6 @@
     "symfony/validator": "~2.3.0"
   },
   "autoload": {
-    "psr-4": { "SpamRoast\\DataMigrator\\": "src" }
+    "psr-4": { "Pancoast\\DataMigrator\\": "src" }
   }
 }

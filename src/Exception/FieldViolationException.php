@@ -1,15 +1,15 @@
 <?php
 /**
- * @package spamroast/data-migrator
+ * @package johnpancoast/data-migrator
  * @copyright (c) 2015 John Pancoast
  * @author John Pancoast <johnpancoaster@gmail.com>
  * @license MIT
  */
 
-namespace SpamRoast\DataMigrator\Exception;
+namespace Pancoast\DataMigrator\Exception;
 
 /**
- * SpamRoast\DataMigrator\Exception\FieldViolationException
+ * Pancoast\DataMigrator\Exception\FieldViolationException
  *
  * @author John Pancoast <johnpancoaster@gmail.com>
  */

@@ -1,18 +1,18 @@
 <?php
 /**
- * @package spamroast/data-migrator
+ * @package johnpancoast/data-migrator
  * @copyright (c) 2015 John Pancoast
  * @author John Pancoast <johnpancoaster@gmail.com>
  * @license MIT
  */
 
-namespace SpamRoast\DataMigrator;
+namespace Pancoast\DataMigrator;
 
-use SpamRoast\DataMigrator\Exception\FieldViolationException;
+use Pancoast\DataMigrator\Exception\FieldViolationException;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
 
 /**
- * SpamRoast\DataMigrator\AbstractField
+ * Pancoast\DataMigrator\AbstractField
  *
  * @author John Pancoast <johnpancoaster@gmail.com>
  */

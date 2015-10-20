@@ -1,17 +1,17 @@
 <?php
 /**
- * @package spamroast/data-migrator
+ * @package johnpancoast/data-migrator
  * @copyright (c) 2015 John Pancoast
  * @author John Pancoast <johnpancoaster@gmail.com>
  * @license MIT
  */
 
-namespace SpamRoast\DataMigrator\Model;
+namespace Pancoast\DataMigrator\Model;
 
-use SpamRoast\DataMigrator\AbstractModel;
+use Pancoast\DataMigrator\AbstractModel;
 
 /**
- * SpamRoast\DataMigrator\Model\AbstractCsvModel
+ * Pancoast\DataMigrator\Model\AbstractCsvModel
  *
  * @author John Pancoast <johnpancoaster@gmail.com>
  */

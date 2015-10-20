@@ -1,15 +1,15 @@
 <?php
 /**
- * @package spamroast/data-migrator
+ * @package johnpancoast/data-migrator
  * @copyright (c) 2015 John Pancoast
  * @author John Pancoast <johnpancoaster@gmail.com>
  * @license MIT
  */
 
-namespace SpamRoast\DataMigrator\Exception;
+namespace Pancoast\DataMigrator\Exception;
 
 /**
- * SpamRoast\DataMigrator\Exception\SkippableModelIterationException
+ * Pancoast\DataMigrator\Exception\SkippableModelIterationException
  *
  * @author John Pancoast <johnpancoaster@gmail.com>
  */

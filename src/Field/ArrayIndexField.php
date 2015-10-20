@@ -1,17 +1,17 @@
 <?php
 /**
- * @package spamroast/data-migrator
+ * @package johnpancoast/data-migrator
  * @copyright (c) 2015 John Pancoast
  * @author John Pancoast <johnpancoaster@gmail.com>
  * @license MIT
  */
 
-namespace SpamRoast\DataMigrator\Field;
+namespace Pancoast\DataMigrator\Field;
 
-use SpamRoast\DataMigrator\AbstractField;
+use Pancoast\DataMigrator\AbstractField;
 
 /**
- * SpamRoast\DataMigrator\Field\ArrayIndexField
+ * Pancoast\DataMigrator\Field\ArrayIndexField
  *
  * @author John Pancoast <johnpancoaster@gmail.com>
  */
