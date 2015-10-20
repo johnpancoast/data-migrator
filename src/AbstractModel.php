@@ -66,7 +66,7 @@ abstract class AbstractModel implements ModelInterface
         $messages = [];
 
         foreach ($violationList as $violation) {
-            $messages[] = sprintf('%s - %s', $violation->getFieldName(), $violation->getMessage());
+            $messages[] = sprintf('[%s] - %s', $violation->getFieldName(), $violation->getMessage());
         }
 
         throw new HaltableModelIterationException(
