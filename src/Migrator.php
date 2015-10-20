@@ -52,8 +52,8 @@ class Migrator implements MigratorInterface
 
     /**
      * Constructor
-     * @param ModelInterface|null $model
-     * @param \Iterator|null $data
+     * @param ModelInterface $model
+     * @param \Iterator $data
      */
     public function __construct(ModelInterface $model, \Iterator $data)
     {
