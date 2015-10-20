@@ -149,7 +149,9 @@ class Migrator implements MigratorInterface
                 }
             }
 
-            $this->model->handleIterationConstraintViolations($this->currentIteration, $fieldViolationList);
+            if (!empty($fieldViolationList)) {
+                $this->model->handleIterationConstraintViolations($this->currentIteration, $fieldViolationList);
+            }
 
         // Skippable exceptions are caught, saved, then ignored.
         // All others are thrown up.
