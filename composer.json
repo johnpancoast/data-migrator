@@ -1,6 +1,6 @@
 {
-  "name": "shideon/data-mover",
-  "description": "PHP lib for moving data",
+  "name": "shideon/data-migrator",
+  "description": "PHP lib providing abstractions and structure to migrate data from an input to an output",
   "license": "mit",
   "authors": [
     {
@@ -13,6 +13,6 @@
     "symfony/validator": "~2.3.0"
   },
   "autoload": {
-    "psr-4": { "Shideon\\DataMover\\": "src" }
+    "psr-4": { "Shideon\\DataMigrator\\": "src" }
   }
 }

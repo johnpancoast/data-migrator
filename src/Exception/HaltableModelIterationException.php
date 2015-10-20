@@ -6,10 +6,10 @@
  * @license MIT
  */
 
-namespace Shideon\DataMover\Exception;
+namespace Shideon\DataMigrator\Exception;
 
 /**
- * Shideon\DataMover\Exception\HaltableModelIterationException
+ * Shideon\DataMigrator\Exception\HaltableModelIterationException
  *
  * @author John Pancoast <johnpancoaster@gmail.com>
  */

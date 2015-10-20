@@ -6,12 +6,12 @@
  * @license MIT
  */
 
-namespace Shideon\DataMover\Field;
+namespace Shideon\DataMigrator\Field;
 
-use Shideon\DataMover\AbstractField;
+use Shideon\DataMigrator\AbstractField;
 
 /**
- * Shideon\DataMover\Field\CallableField
+ * Shideon\DataMigrator\Field\CallableField
  *
  * @author John Pancoast <johnpancoaster@gmail.com>
  */
@@ -21,7 +21,7 @@ class CallableField extends AbstractField
      * Callable for handling logic to retrieve data for this field from
      * an iteration of input data
      *
-     * This callable should share the same signature as {@see Shideon\DataMover\FieldInterface::extractValue()}.
+     * This callable should share the same signature as {@see Shideon\DataMigrator\FieldInterface::extractValue()}.
      *
      *    @#param mixed $iterationInput One iteration of input to pull the specific value from
      *    @#return mixed The value to be assigned to the field

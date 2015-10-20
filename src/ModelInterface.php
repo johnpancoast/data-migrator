@@ -6,11 +6,10 @@
  * @license MIT
  */
 
-namespace Shideon\DataMover;
-use Symfony\Component\Validator\ConstraintViolationListInterface;
+namespace Shideon\DataMigrator;
 
 /**
- * Shideon\DataMover\ModelInterface
+ * Shideon\DataMigrator\ModelInterface
  *
  * @author John Pancoast <johnpancoaster@gmail.com>
  */

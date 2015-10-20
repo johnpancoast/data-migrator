@@ -6,14 +6,14 @@
  * @license MIT
  */
 
-namespace Shideon\DataMover;
+namespace Shideon\DataMigrator;
 
 /**
- * Shideon\DataMover\DataMoverInterface
+ * Shideon\DataMigrator\MigratorInterface
  *
  * @author John Pancoast <johnpancoaster@gmail.com>
  */
-interface DataMoverInterface
+interface MigratorInterface
 {
     /**
      * Set model

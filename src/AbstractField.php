@@ -6,12 +6,12 @@
  * @license MIT
  */
 
-namespace Shideon\DataMover;
-use Shideon\DataMover\Exception\FieldViolationException;
+namespace Shideon\DataMigrator;
+use Shideon\DataMigrator\Exception\FieldViolationException;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
 
 /**
- * Shideon\DataMover\AbstractField
+ * Shideon\DataMigrator\AbstractField
  *
  * @author John Pancoast <johnpancoaster@gmail.com>
  */
@@ -90,6 +90,6 @@ abstract class AbstractField implements FieldInterface
     public function handleConstraintViolations(ConstraintViolationListInterface $violations)
     {
         // Our lib does nothing for a failed field at this layer. Override at will but if throwing exceptions,
-        // see internals at {@see DataMover::handleIteration()}.
+        // see internals at {@see DataMigrator::handleIteration()}.
     }
 }

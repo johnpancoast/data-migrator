@@ -6,12 +6,12 @@
  * @license MIT
  */
 
-namespace Shideon\DataMover\Model;
+namespace Shideon\DataMigrator\Model;
 
-use Shideon\DataMover\AbstractModel;
+use Shideon\DataMigrator\AbstractModel;
 
 /**
- * Shideon\DataMover\Model\AbstractCsvModel
+ * Shideon\DataMigrator\Model\AbstractCsvModel
  *
  * @author John Pancoast <johnpancoaster@gmail.com>
  */

@@ -6,18 +6,19 @@
  * @license MIT
  */
 
-namespace Shideon\DataMover;
-use Shideon\DataMover\Exception\FieldViolationException;
-use Shideon\DataMover\Exception\SkippableModelIterationException;
+namespace Shideon\DataMigrator;
+
+use Shideon\DataMigrator\Exception\FieldViolationException;
+use Shideon\DataMigrator\Exception\SkippableModelIterationException;
 use Symfony\Component\Validator\Validation;
 use Symfony\Component\Validator\Validator;
 
 /**
- * Shideon\DataMover\DataMover
+ * Shideon\DataMigrator\Migrator
  *
  * @author John Pancoast <johnpancoaster@gmail.com>
  */
-class DataMover implements DataMoverInterface
+class Migrator implements MigratorInterface
 {
     /**
      * @var ModelInterface

@@ -6,12 +6,12 @@
  * @license MIT
  */
 
-namespace Shideon\DataMover\Field;
+namespace Shideon\DataMigrator\Field;
 
-use Shideon\DataMover\AbstractField;
+use Shideon\DataMigrator\AbstractField;
 
 /**
- * Shideon\DataMover\Field\CsvField
+ * Shideon\DataMigrator\Field\CsvField
  *
  * @author John Pancoast <johnpancoaster@gmail.com>
  */
