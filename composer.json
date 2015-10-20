@@ -10,7 +10,7 @@
   ],
   "require": {
     "php": "~5.4",
-    "symfony/validator": "~2.3"
+    "symfony/validator": "~2.3.0"
   },
   "autoload": {
     "psr-4": { "Shideon\\DataMover\\": "src" }
