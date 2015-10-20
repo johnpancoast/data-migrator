@@ -6,11 +6,11 @@
  * @license MIT
  */
 
-namespace Shideon\DataMigrator;
+namespace SpamRoast\DataMigrator;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
 
 /**
- * Shideon\DataMigrator\FieldInterface
+ * SpamRoast\DataMigrator\FieldInterface
  *
  * @author John Pancoast <johnpancoaster@gmail.com>
  */

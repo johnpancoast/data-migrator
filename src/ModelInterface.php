@@ -6,10 +6,10 @@
  * @license MIT
  */
 
-namespace Shideon\DataMigrator;
+namespace SpamRoast\DataMigrator;
 
 /**
- * Shideon\DataMigrator\ModelInterface
+ * SpamRoast\DataMigrator\ModelInterface
  *
  * @author John Pancoast <johnpancoaster@gmail.com>
  */

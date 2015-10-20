@@ -6,12 +6,12 @@
  * @license MIT
  */
 
-namespace Shideon\DataMigrator;
-use Shideon\DataMigrator\Exception\HaltableModelIterationException;
+namespace SpamRoast\DataMigrator;
+use SpamRoast\DataMigrator\Exception\HaltableModelIterationException;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
 
 /**
- * Shideon\DataMigrator\AbstractModel
+ * SpamRoast\DataMigrator\AbstractModel
  *
  * @author John Pancoast <johnpancoaster@gmail.com>
  */

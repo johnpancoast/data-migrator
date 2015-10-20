@@ -6,15 +6,15 @@
  * @license MIT
  */
 
-namespace Shideon\DataMigrator;
+namespace SpamRoast\DataMigrator;
 
-use Shideon\DataMigrator\Exception\FieldViolationException;
-use Shideon\DataMigrator\Exception\SkippableModelIterationException;
+use SpamRoast\DataMigrator\Exception\FieldViolationException;
+use SpamRoast\DataMigrator\Exception\SkippableModelIterationException;
 use Symfony\Component\Validator\Validation;
 use Symfony\Component\Validator\Validator;
 
 /**
- * Shideon\DataMigrator\Migrator
+ * SpamRoast\DataMigrator\Migrator
  *
  * @author John Pancoast <johnpancoaster@gmail.com>
  */

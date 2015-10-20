@@ -6,10 +6,10 @@
  * @license MIT
  */
 
-namespace Shideon\DataMigrator\Exception;
+namespace SpamRoast\DataMigrator\Exception;
 
 /**
- * Shideon\DataMigrator\Exception\SkippableModelIterationException
+ * SpamRoast\DataMigrator\Exception\SkippableModelIterationException
  *
  * @author John Pancoast <johnpancoaster@gmail.com>
  */

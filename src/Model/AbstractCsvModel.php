@@ -6,12 +6,12 @@
  * @license MIT
  */
 
-namespace Shideon\DataMigrator\Model;
+namespace SpamRoast\DataMigrator\Model;
 
-use Shideon\DataMigrator\AbstractModel;
+use SpamRoast\DataMigrator\AbstractModel;
 
 /**
- * Shideon\DataMigrator\Model\AbstractCsvModel
+ * SpamRoast\DataMigrator\Model\AbstractCsvModel
  *
  * @author John Pancoast <johnpancoaster@gmail.com>
  */

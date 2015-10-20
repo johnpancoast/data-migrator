@@ -6,10 +6,10 @@
  * @license MIT
  */
 
-namespace Shideon\DataMigrator\Exception;
+namespace SpamRoast\DataMigrator\Exception;
 
 /**
- * Shideon\DataMigrator\Exception\HaltableModelIterationException
+ * SpamRoast\DataMigrator\Exception\HaltableModelIterationException
  *
  * @author John Pancoast <johnpancoaster@gmail.com>
  */

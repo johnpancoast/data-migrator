@@ -6,12 +6,12 @@
  * @license MIT
  */
 
-namespace Shideon\DataMigrator\Exception;
+namespace SpamRoast\DataMigrator\Exception;
 
 use Symfony\Component\Validator\ConstraintViolationListInterface;
 
 /**
- * Shideon\DataMigrator\Exception\FieldViolationException
+ * SpamRoast\DataMigrator\Exception\FieldViolationException
  *
  * @author John Pancoast <johnpancoaster@gmail.com>
  */

@@ -6,12 +6,12 @@
  * @license MIT
  */
 
-namespace Shideon\DataMigrator\Field;
+namespace SpamRoast\DataMigrator\Field;
 
-use Shideon\DataMigrator\AbstractField;
+use SpamRoast\DataMigrator\AbstractField;
 
 /**
- * Shideon\DataMigrator\Field\CallableField
+ * SpamRoast\DataMigrator\Field\CallableField
  *
  * @author John Pancoast <johnpancoaster@gmail.com>
  */
@@ -21,7 +21,7 @@ class CallableField extends AbstractField
      * Callable for handling logic to retrieve data for this field from
      * an iteration of input data
      *
-     * This callable should share the same signature as {@see Shideon\DataMigrator\FieldInterface::extractValue()}.
+     * This callable should share the same signature as {@see SpamRoast\DataMigrator\FieldInterface::extractValue()}.
      *
      *    @#param mixed $iterationInput One iteration of input to pull the specific value from
      *    @#return mixed The value to be assigned to the field
