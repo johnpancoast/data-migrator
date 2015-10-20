@@ -9,7 +9,7 @@
 namespace Pancoast\DataMigrator;
 
 /**
- * Pancoast\DataMigrator\ModelInterface
+ * Contract for a migration model
  *
  * @author John Pancoast <johnpancoaster@gmail.com>
  */

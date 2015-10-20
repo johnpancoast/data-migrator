@@ -11,7 +11,7 @@ namespace Pancoast\DataMigrator;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
 
 /**
- * Pancoast\DataMigrator\FieldInterface
+ * Contract for a migration model field
  *
  * @author John Pancoast <johnpancoaster@gmail.com>
  */

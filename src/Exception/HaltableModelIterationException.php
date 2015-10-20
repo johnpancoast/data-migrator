@@ -9,7 +9,7 @@
 namespace Pancoast\DataMigrator\Exception;
 
 /**
- * Pancoast\DataMigrator\Exception\HaltableModelIterationException
+ * A model iteration exception that will cause iterating to stop
  *
  * @author John Pancoast <johnpancoaster@gmail.com>
  */

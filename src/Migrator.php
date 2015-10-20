@@ -14,7 +14,9 @@ use Symfony\Component\Validator\Validation;
 use Symfony\Component\Validator\Validator;
 
 /**
- * Pancoast\DataMigrator\Migrator
+ * Data migrator
+ *
+ * This is the core public interface to interact with
  *
  * @author John Pancoast <johnpancoaster@gmail.com>
  */

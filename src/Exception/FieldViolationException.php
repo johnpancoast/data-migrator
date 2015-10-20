@@ -9,7 +9,7 @@
 namespace Pancoast\DataMigrator\Exception;
 
 /**
- * Pancoast\DataMigrator\Exception\FieldViolationException
+ * Constraint violation exception for a field
  *
  * @author John Pancoast <johnpancoaster@gmail.com>
  */

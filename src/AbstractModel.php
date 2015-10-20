@@ -11,7 +11,7 @@ namespace Pancoast\DataMigrator;
 use Pancoast\DataMigrator\Exception\HaltableModelIterationException;
 
 /**
- * Pancoast\DataMigrator\AbstractModel
+ * Abstract migration model
  *
  * @author John Pancoast <johnpancoaster@gmail.com>
  */

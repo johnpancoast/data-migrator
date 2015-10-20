@@ -12,7 +12,7 @@ use Pancoast\DataMigrator\Exception\FieldViolationException;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
 
 /**
- * Pancoast\DataMigrator\AbstractField
+ * Abstract migration model field
  *
  * @author John Pancoast <johnpancoaster@gmail.com>
  */

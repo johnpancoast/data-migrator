@@ -11,7 +11,7 @@ namespace Pancoast\DataMigrator\Field;
 use Pancoast\DataMigrator\AbstractField;
 
 /**
- * Pancoast\DataMigrator\Field\ArrayIndexField
+ * A model field allowing a passed in array index to be used in field value extraction
  *
  * @author John Pancoast <johnpancoaster@gmail.com>
  */

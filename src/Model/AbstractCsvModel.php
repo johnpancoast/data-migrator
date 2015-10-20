@@ -11,7 +11,7 @@ namespace Pancoast\DataMigrator\Model;
 use Pancoast\DataMigrator\AbstractModel;
 
 /**
- * Pancoast\DataMigrator\Model\AbstractCsvModel
+ * A CSV migration model
  *
  * @author John Pancoast <johnpancoaster@gmail.com>
  */

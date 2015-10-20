@@ -11,7 +11,7 @@ namespace Pancoast\DataMigrator\Field;
 use Pancoast\DataMigrator\AbstractField;
 
 /**
- * Pancoast\DataMigrator\Field\CallableField
+ * A model field accepting a callable to be used in field value extraction
  *
  * @author John Pancoast <johnpancoaster@gmail.com>
  */

@@ -9,7 +9,7 @@
 namespace Pancoast\DataMigrator\Exception;
 
 /**
- * Pancoast\DataMigrator\Exception\SkippableModelIterationException
+ * A model iteration exception that will allow iterating to continue
  *
  * @author John Pancoast <johnpancoaster@gmail.com>
  */
