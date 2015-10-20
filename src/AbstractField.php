@@ -1,6 +1,6 @@
 <?php
 /**
- * @package shideon/data-mover
+ * @package spamroast/data-migrator
  * @copyright (c) 2015 John Pancoast
  * @author John Pancoast <johnpancoaster@gmail.com>
  * @license MIT
