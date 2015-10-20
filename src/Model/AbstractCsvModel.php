@@ -8,18 +8,14 @@
 
 namespace Shideon\DataMover\Model;
 
-use Shideon\DataMover\FieldInterface;
-use Shideon\DataMover\Input;
-use Shideon\DataMover\Iteration;
-use Shideon\DataMover\ModelInterface;
-use Shideon\DataMover\Output;
+use Shideon\DataMover\AbstractModel;
 
 /**
  * Shideon\DataMover\Model\AbstractCsvModel
  *
  * @author John Pancoast <johnpancoaster@gmail.com>
  */
-abstract class AbstractCsvModel implements ModelInterface
+abstract class AbstractCsvModel extends AbstractModel
 {
     /**
      * @var string Csv field delimiter
@@ -72,41 +68,5 @@ abstract class AbstractCsvModel implements ModelInterface
     public function createIterationInput($iterationData)
     {
         return str_getcsv($iterationData, $this->delimiter, $this->enclosure, $this->escape);
-    }
-
-    /**
-     * @inheritDoc
-     * @see ModelInterface::begin()
-     */
-    public function begin()
-    {
-        // nothing to do by default. override at will.
-    }
-
-    /**
-     * @inheritDoc
-     * @see ModelInterface::end()
-     */
-    public function end()
-    {
-        // nothing to do by default. override at will.
-    }
-
-    /**
-     * @inheritDoc
-     * @see ModelInterface::beginIteration()
-     */
-    public function beginIteration(&$iterationInput, &$iterationOutput)
-    {
-        // nothing to do by default. override at will.
-    }
-
-    /**
-     * @inheritDoc
-     * @see ModelInterface::endIteration()
-     */
-    public function endIteration($iterationOutput)
-    {
-        // nothing to do by default. override at will.
     }
 }

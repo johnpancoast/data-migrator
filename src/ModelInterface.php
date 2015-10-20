@@ -7,6 +7,7 @@
  */
 
 namespace Shideon\DataMover;
+use Symfony\Component\Validator\ConstraintViolationListInterface;
 
 /**
  * Shideon\DataMover\ModelInterface
@@ -53,8 +54,8 @@ interface ModelInterface
      * $iterationOutput will *always* be overwritten by internal logic handling field input
      * so take notice of the object properties you're setting.
      *
-     * @param $iterationInput Input data for this iteration created by {@see self::createIterationInput()}
-     * @param $iterationOutput Output data for this iteration
+     * @param mixed $iterationInput Input data for this iteration created by {@see self::createIterationInput()}
+     * @param array $iterationOutput Output data for this iteration
      */
     public function beginIteration(&$iterationInput, &$iterationOutput);
 
@@ -76,4 +77,18 @@ interface ModelInterface
      * Writing your transaction or doing some post cleanup are examples of things you might do here.
      */
     public function end();
+
+    /**
+     * Handle constrain violations for an iteration
+     *
+     * This method can throw certain exceptions to effect the behavior of future iterations. See @#throws
+     * docs below.
+     *
+     * @param int $iteration Iteration number where the exception occurred
+     * @param FieldViolationException[] An array of {@see FieldViolationException}.
+     * @throws HaltableModelIterationException Which will halt iterating in the migrator
+     * @throws SilentModelIterationException Which will let iterating continue in the migrator
+     * @return void
+     */
+    public function handleIterationConstraintViolations($iteration, array $violationList);
 }

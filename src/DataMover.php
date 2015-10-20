@@ -7,6 +7,8 @@
  */
 
 namespace Shideon\DataMover;
+use Shideon\DataMover\Exception\FieldViolationException;
+use Shideon\DataMover\Exception\SkippableModelIterationException;
 use Symfony\Component\Validator\Validation;
 use Symfony\Component\Validator\Validator;
 
@@ -36,6 +38,16 @@ class DataMover implements DataMoverInterface
      * @var Validator
      */
     protected $validator;
+
+    /**
+     * @var \Exception[] Array of exceptions for an iteration
+     */
+    protected $iterationExceptions = [];
+
+    /**
+     * @var int Current iteration numbe
+     */
+    protected $currentIteration = 0;
 
     /**
      * Constructor
@@ -97,29 +109,59 @@ class DataMover implements DataMoverInterface
      */
     protected function handleIteration($iterationInput)
     {
-        $iterationInput = $this->model->createIterationInput($iterationInput);
-        $iterationOutput = [];
+        $this->currentIteration ++;
 
-        $this->model->beginIteration($iterationInput, $iterationOutput);
+        try {
+            // collection of field exceptions for this iteration
+            $fieldViolationList = [];
 
-        foreach ($this->model->getFields() as $field) {
-            $name = $field->getName();
+            $iterationInput = $this->model->createIterationInput($iterationInput);
+            $iterationOutput = [];
 
-            // set value of output field by extracting using field
-            $iterationOutput[$name] = $field->extractValue($iterationInput);
+            $this->model->beginIteration($iterationInput, $iterationOutput);
 
-            $errors = $this->validator->validateValue(
-                $iterationOutput[$name],
-                $field->getConstraints()
-            );
+            foreach ($this->model->getFields() as $field) {
+                $name = $field->getName();
 
-            if (count($errors) > 0) {
-                $this->validationErrors[$name] = $errors;
+                // set value of output field by extracting using field
+                $iterationOutput[$name] = $field->extractValue($iterationInput);
+
+                $violations = $this->validator->validateValue(
+                    $iterationOutput[$name],
+                    $field->getConstraints()
+                );
+
+                if (count($violations) > 0) {
+                    $fieldErrorMessages = [];
+
+                    foreach ($violations as $violation) {
+                        $fieldErrorMessages[] = $violation->getMessage();
+                    }
+
+                    $fieldViolationList[] = FieldViolationException::build(
+                        $name,
+                        implode(', ', $fieldErrorMessages)
+                    );
+                }
             }
 
-            // @todo determine how validation errors are handled
+            $this->model->handleIterationConstraintViolations($this->currentIteration, $fieldViolationList);
+
+        // Skippable exceptions are caught, saved, then ignored.
+        // All others are thrown up.
+        } catch (SkippableModelIterationException $e) {
+            $this->iterationExceptions[$this->currentIteration] = $e;
         }
 
         $this->model->endIteration($iterationOutput);
+    }
+
+    /**
+     * Get iteration exceptions
+     * @return \Exception[]
+     */
+    public function getIterationExceptions()
+    {
+        return $this->iterationExceptions;
     }
 }

@@ -7,6 +7,7 @@
  */
 
 namespace Shideon\DataMover;
+use Symfony\Component\Validator\ConstraintViolationListInterface;
 
 /**
  * Shideon\DataMover\FieldInterface
@@ -45,4 +46,11 @@ interface FieldInterface
      * @return mixed The value to be assigned to the field
      */
     public function extractValue($iterationInput);
+
+    /**
+     * Handle constraint violations
+     *
+     * @param ConstraintViolationListInterface $violations
+     */
+    public function handleConstraintViolations(ConstraintViolationListInterface $violations);
 }
