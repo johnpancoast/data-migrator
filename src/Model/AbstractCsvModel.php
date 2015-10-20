@@ -65,7 +65,7 @@ abstract class AbstractCsvModel extends AbstractModel
     /**
      * @inheritDoc
      */
-    public function createIterationInput($iterationData)
+    public function createIterationInput($iterationCount, $iterationData)
     {
         return str_getcsv($iterationData, $this->delimiter, $this->enclosure, $this->escape);
     }

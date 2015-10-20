@@ -46,9 +46,9 @@ class Migrator implements MigratorInterface
     protected $iterationExceptions = [];
 
     /**
-     * @var int Current iteration numbe
+     * @var int Current iteration count
      */
-    protected $currentIteration = 0;
+    protected $iterationCount = 0;
 
     /**
      * Constructor
@@ -111,10 +111,10 @@ class Migrator implements MigratorInterface
     protected function handleIteration($iterationInput)
     {
         try {
-            $this->currentIteration ++;
+            $this->iterationCount ++;
 
             // input that gets passed to fields in user model
-            $iterationInput = $this->model->createIterationInput($iterationInput);
+            $iterationInput = $this->model->createIterationInput($this->iterationCount, $iterationInput);
 
             // output that gets handled in user model
             $iterationOutput = [];
@@ -122,7 +122,7 @@ class Migrator implements MigratorInterface
             // collection of field exceptions for this iteration
             $fieldViolationList = [];
 
-            $this->model->beginIteration($iterationInput, $iterationOutput);
+            $this->model->beginIteration($this->iterationCount, $iterationInput, $iterationOutput);
 
             foreach ($this->model->getFields() as $field) {
                 $name = $field->getName();
@@ -150,16 +150,16 @@ class Migrator implements MigratorInterface
             }
 
             if (!empty($fieldViolationList)) {
-                $this->model->handleIterationConstraintViolations($this->currentIteration, $fieldViolationList);
+                $this->model->handleIterationConstraintViolations($this->iterationCount, $fieldViolationList);
             }
 
         // Skippable exceptions are caught, saved, then ignored.
         // All others are thrown up.
         } catch (SkippableModelIterationException $e) {
-            $this->iterationExceptions[$this->currentIteration] = $e;
+            $this->iterationExceptions[$this->iterationCount] = $e;
         }
 
-        $this->model->endIteration($iterationOutput);
+        $this->model->endIteration($this->iterationCount, $iterationOutput);
     }
 
     /**

@@ -38,10 +38,11 @@ interface ModelInterface
      * This method is called after {@see self::begin()} and before {@see::self::beginIteration()} to define
      * the input data for this iteration.
      *
-     * @param mixed $iterationData
+     * @param int $iterationCount The iteration count of this iteration
+     * @param mixed $iterationData Data to create iteration input from
      * @return mixed
      */
-    public function createIterationInput($iterationData);
+    public function createIterationInput($iterationCount, $iterationData);
 
     /**
      * Logic to run at the beginning of an iteration
@@ -53,10 +54,11 @@ interface ModelInterface
      * $iterationOutput will *always* be overwritten by internal logic handling field input
      * so take notice of the object properties you're setting.
      *
+     * @param int $iterationCount The iteration count of this iteration
      * @param mixed $iterationInput Input data for this iteration created by {@see self::createIterationInput()}
      * @param array $iterationOutput Output data for this iteration
      */
-    public function beginIteration(&$iterationInput, &$iterationOutput);
+    public function beginIteration($iterationCount, &$iterationInput, &$iterationOutput);
 
     /**
      * Logic to run at the end of an iteration
@@ -66,9 +68,10 @@ interface ModelInterface
      * of each iteration. Ppersisting an object or adding something to a transaction are examples of
      * things you might do here.
      *
+     * @param int $iterationCount The iteration count of this iteration
      * @param $iterationOutput Iteration output after field input and validation have occurred
      */
-    public function endIteration($iterationOutput);
+    public function endIteration($iterationCount, $iterationOutput);
 
     /**
      * Logic to run after all iterations

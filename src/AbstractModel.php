@@ -20,7 +20,7 @@ abstract class AbstractModel implements ModelInterface
     /**
      * @inheritDoc
      */
-    abstract public function createIterationInput($iterationData);
+    abstract public function createIterationInput($iterationCount, $iterationData);
 
     /**
      * @inheritDoc
@@ -44,7 +44,7 @@ abstract class AbstractModel implements ModelInterface
      * @inheritDoc
      * @see ModelInterface::beginIteration()
      */
-    public function beginIteration(&$iterationInput, &$iterationOutput)
+    public function beginIteration($iterationCount, &$iterationInput, &$iterationOutput)
     {
         // nothing to do by default. override at will.
     }
@@ -53,7 +53,7 @@ abstract class AbstractModel implements ModelInterface
      * @inheritDoc
      * @see ModelInterface::endIteration()
      */
-    public function endIteration($iterationOutput)
+    public function endIteration($iterationCount, $iterationOutput)
     {
         // nothing to do by default. override at will.
     }
