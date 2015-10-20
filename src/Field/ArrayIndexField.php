@@ -11,25 +11,25 @@ namespace SpamRoast\DataMigrator\Field;
 use SpamRoast\DataMigrator\AbstractField;
 
 /**
- * SpamRoast\DataMigrator\Field\CsvField
+ * SpamRoast\DataMigrator\Field\ArrayIndexField
  *
  * @author John Pancoast <johnpancoaster@gmail.com>
  */
-class CsvField extends AbstractField
+class ArrayIndexField extends AbstractField
 {
     /**
      * @var int Position of this field in an iteration of input data
      */
-    private $fieldPosition;
+    private $fieldIndex;
 
     /**
      * @inheritDoc
      * @param int $fieldPosition Position of this field in an iteration of input data
      */
-    public function __construct($name, array $constraints, $fieldPosition)
+    public function __construct($name, array $constraints, $fieldIndex)
     {
         parent::__construct($name, $constraints);
-        $this->fieldPosition = $fieldPosition;
+        $this->fieldIndex = $fieldIndex;
     }
 
     /**
@@ -37,6 +37,6 @@ class CsvField extends AbstractField
      */
     public function extractValue($iterationInput)
     {
-        return $iterationInput[$this->fieldPosition];
+        return $iterationInput[$this->fieldIndex];
     }
 }
