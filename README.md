@@ -260,7 +260,7 @@ In ```MyClass``` in the above example, look at the fields we defined. The 2nd pa
 new ArrayIndexField(
     'foo',
     [
-        new Constraint\Type(['type' => 'int'])
+        new \Symfony\Component\Validator\Constraints\Type(['type' => 'int'])
     ],
     0
 ),
