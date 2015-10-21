@@ -91,6 +91,6 @@ abstract class AbstractField implements FieldInterface
     public function handleConstraintViolations(ConstraintViolationListInterface $violations)
     {
         // Our lib does nothing for a failed field at this layer. Override at will but if throwing exceptions,
-        // see internals at {@see DataMigrator::handleIteration()}.
+        // see internals at {@see Migrator::handleIteration()}.
     }
 }
