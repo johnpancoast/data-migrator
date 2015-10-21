@@ -82,11 +82,11 @@ interface ModelInterface
      * This method can throw certain exceptions to effect the behavior of future iterations. See @#throws
      * docs below.
      *
-     * @param int $iteration Iteration number where the exception occurred
+     * @param int $iterationCount Iteration number where the exception occurred
      * @param FieldViolationException[] An array of {@see FieldViolationException}.
      * @throws HaltableModelIterationException Which will halt iterating in the migrator
      * @throws SilentModelIterationException Which will let iterating continue in the migrator
      * @return void
      */
-    public function handleIterationConstraintViolations($iteration, array $violationList);
+    public function handleIterationConstraintViolations($iterationCount, array $violationList);
 }

@@ -69,7 +69,7 @@ abstract class AbstractModel implements ModelInterface
     /**
      * @inheritDoc
      */
-    public function handleIterationConstraintViolations($iteration, array $violationList)
+    public function handleIterationConstraintViolations($iterationCount, array $violationList)
     {
         $messages = [];
 
@@ -80,7 +80,7 @@ abstract class AbstractModel implements ModelInterface
         throw new HaltableModelIterationException(
             sprintf(
                 'The following field errors occurred in iteration %s: %s',
-                $iteration,
+                $iterationCount,
                 implode(', ', $messages)
             )
         );
