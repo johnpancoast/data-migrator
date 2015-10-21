@@ -112,17 +112,18 @@ class Migrator implements MigratorInterface
      */
     protected function handleIteration($iterationInput)
     {
+        $this->iterationCount ++;
+
+        // input that gets passed to fields in user model
+        $iterationInput = $this->model->createIterationInput($this->iterationCount, $iterationInput);
+
+        // output that gets handled in user model
+        $iterationOutput = [];
+
+        // collection of field exceptions for this iteration
+        $fieldViolationList = [];
+
         try {
-            $this->iterationCount ++;
-
-            // input that gets passed to fields in user model
-            $iterationInput = $this->model->createIterationInput($this->iterationCount, $iterationInput);
-
-            // output that gets handled in user model
-            $iterationOutput = [];
-
-            // collection of field exceptions for this iteration
-            $fieldViolationList = [];
 
             $this->model->beginIteration($this->iterationCount, $iterationInput, $iterationOutput);
 
