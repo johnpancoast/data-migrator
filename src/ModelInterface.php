@@ -65,8 +65,7 @@ interface ModelInterface
      *
      * This is run after field validation has succeeded. $iterationOutput will be an array with values
      * matching those defined in {@see self::getFields()}. This method is useful for handling the end
-     * of each iteration. Ppersisting an object or adding something to a transaction are examples of
-     * things you might do here.
+     * of each iteration. Adding something to a transaction is an examples of something you might do here.
      *
      * @param int $iterationCount The iteration count of this iteration
      * @param $iterationOutput Iteration output after field input and validation have occurred
