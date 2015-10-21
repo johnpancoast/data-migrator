@@ -20,7 +20,15 @@ abstract class AbstractModel implements ModelInterface
     /**
      * @inheritDoc
      */
-    abstract public function createIterationInput($iterationCount, $iterationData);
+    abstract public function getFields();
+
+    /**
+     * @inheritDoc
+     */
+    public function createIterationInput($iterationCount, $iterationData)
+    {
+        return $iterationData;
+    }
 
     /**
      * @inheritDoc
