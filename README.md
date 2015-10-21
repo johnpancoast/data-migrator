@@ -13,7 +13,7 @@ data-migrator uses [composer](https://getcomposer.org/).
 To include it, either use [composer require](https://getcomposer.org/doc/03-cli.md#require)
  
 ```
-composer require johnpancoast/data-migrator:~0.2.4
+composer require johnpancoast/data-migrator:~0.2.5
 ```
 
 ... or require it in your project's composer file
@@ -21,7 +21,7 @@ composer require johnpancoast/data-migrator:~0.2.4
 ```php
 {
     "require": {
-        "johnpancoast/data-migrator": "~0.2.4",
+        "johnpancoast/data-migrator": "~0.2.5",
     }
 }
 ```
