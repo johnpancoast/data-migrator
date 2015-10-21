@@ -19,7 +19,7 @@ interface ModelInterface
      * Get model's fields
      *
      * @param FieldInterface[] Array of {@see self::FieldInterface}
-     * @return mixed
+     * @return array
      */
     public function getFields();
 
@@ -27,8 +27,6 @@ interface ModelInterface
      * Logic to be run before iterating over input data
      *
      * This is the first method to be run re: iterating input data
-     *
-     * @return mixed
      */
     public function begin();
 
@@ -40,7 +38,6 @@ interface ModelInterface
      *
      * @param int $iterationCount The iteration count of this iteration
      * @param mixed $iterationData Data to create iteration input from
-     * @return mixed
      */
     public function createIterationInput($iterationCount, $iterationData);
 
