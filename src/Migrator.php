@@ -138,6 +138,8 @@ class Migrator implements MigratorInterface
                 );
 
                 if (count($violations) > 0) {
+                    $field->handleConstraintViolations($violations);
+
                     $fieldErrorMessages = [];
 
                     foreach ($violations as $violation) {
