@@ -272,7 +272,7 @@ The above would give us the following error. *In our examples it would be uncaug
 
 ```The following field errors occurred in iteration 1: [foo] - This value should be of type int.```
 
-Upon constraint validations, the migrator will call on the following methods:
+Upon constraint violations, the migrator will call on the following methods:
 
 * The ```handleConstraintViolations()``` method of the field that failed (@see FieldInterface::handleConstraintViolations()).
 * The ```handleIterationConstraintViolations()``` method of the model the migrator is running (@see ModelInterface::handleIterationConstraintViolations()).
