@@ -279,6 +279,7 @@ Upon constraint violations, the migrator will call on the following methods:
 
 @todo
 ----
+* Tests.
 * Passing $messages as reference through each iteration method for communication.
 * Perhaps events.
 * More fields and models.
