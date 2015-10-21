@@ -125,7 +125,7 @@ $migrator->run();
 
 ```
 
-Look at ```MyClass``` above. ```getFields()``` is now returning an array of fields which is the definition of the structure you're expecting from each iteration and how this data gets set from each iteration. The first 2 fields are ```ArrayIndexField``` which allow you to specify the array index, in an iteration of input, where a field can be retrieved from. The last field is a ```CallableField``` which allows you to specify a callable to specify how input for the field is determined. *There will be more fields available... it's only v0.2!*
+Look at ```MyClass``` above. ```getFields()``` is now returning an array of fields which is the definition of the structure you're expecting from each iteration and how this data gets set from each iteration. The first 2 fields are ```ArrayIndexField``` which allow you to specify the array index, in an iteration of input, where a field can be retrieved from. The last field is a ```CallableField``` which allows you to pass a callable to specify how input for the field is determined. *There will be more fields available... it's only v0.2!*
 
 You can create and use your own custom field classes. They just need to implement [```FieldInterface```](https://github.com/johnpancoast/data-migrator/blob/master/src/FieldInterface.php).
 
