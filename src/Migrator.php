@@ -49,13 +49,18 @@ class Migrator implements MigratorInterface
 
     /**
      * Constructor
-     * @param ModelInterface $model
-     * @param \Iterator $data
+     * @param ModelInterface $model|null
+     * @param \Iterator $data|null
      */
-    public function __construct(ModelInterface $model, \Iterator $data)
+    public function __construct(ModelInterface $model = null, \Iterator $data = null)
     {
-        $this->setModel($model);
-        $this->setData($data);
+        if ($model) {
+            $this->setModel($model);
+        }
+
+        if ($data) {
+            $this->setData($data);
+        }
     }
 
     /**
