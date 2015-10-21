@@ -33,11 +33,6 @@ class Migrator implements MigratorInterface
     protected $data;
 
     /**
-     * @var array
-     */
-    protected $validationErrors = [];
-
-    /**
      * @var Validator
      */
     protected $validator;
