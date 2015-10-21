@@ -1,5 +1,7 @@
 data-migrator
 =============
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/johnpancoast/data-migrator/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/johnpancoast/data-migrator/?branch=master)
+
 data-migrator is a PHP lib which provides you with a structured way to migrate data from one data structure to another.
 
 The need for this arose from realizing that I was writing some of the same things over and over whenever I handled writing data migrations. Moving data from one database to another, importing and validating CSVs, any stream of data that needed to be sanitized or validated at some point. These all share similar functionality. Not to mention, custom migration scripts tend to become maintenance nightmares which, in certain scenarios, matters if they are migrations which will be used a lot.
