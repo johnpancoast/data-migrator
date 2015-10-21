@@ -24,7 +24,7 @@ class ArrayIndexField extends AbstractField
 
     /**
      * @inheritDoc
-     * @param int $fieldPosition Position of this field in an iteration of input data
+     * @param int $fieldIndex Position of this field in an iteration of input data
      */
     public function __construct($name, array $constraints, $fieldIndex)
     {
