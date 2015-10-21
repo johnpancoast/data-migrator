@@ -80,60 +80,7 @@ $migrator = new Migrator(
 $migrator->run();
 ```
 
-So you can see that to use the migrator, we just need to provide it with a model object and an iterator to iterate. But if we ran the above example, nothing would happen. This is because the model has nothing defined. Let's first add some fields.
-
-```php
-use Pancoast\DataMigrator\AbstractModel;
-use Pancoast\DataMigrator\Field\ArrayIndexField;
-use Pancoast\DataMigrator\Field\CallableField;
-use Pancoast\DataMigrator\Migrator;
-
-class MyModel extends AbstractModel
-{
-    public function getFields()
-    {
-        return [
-            new ArrayIndexField(
-                'foo',
-                [],
-                0
-            ),
-            new ArrayIndexField(
-                'bar',
-                [],
-                1
-            ),
-            new CallableField(
-                'faz',
-                [],
-                ( function($iterationInput) {
-                    return $iterationInput[0].' - '.strrev($iterationInput[1]);
-                })
-            ),
-        ];
-    }
-}
-
-$migrator = new Migrator(
-    new MyModel(),
-    new ArrayIterator([
-        [ 'row1-col0', 'row1-col1' ],
-        [ 'row2-col0', 'row2-col1' ],
-        [ 'row3-col0', 'row3-col1' ]
-    ])
-);
-
-$migrator->run();
-
-```
-
-Look at ```MyClass``` above. ```getFields()``` is now returning an array of fields which is the definition of the structure you're expecting from each iteration and how this data gets set from each iteration. The first 2 fields are ```ArrayIndexField``` which allow you to specify the array index, in an iteration of input, where a field can be retrieved from. The last field is a ```CallableField``` which allows you to pass a callable to specify how input for the field is determined. *There will be more fields available... it's only v0.2!*
-
-You can create and use your own custom field classes. They just need to implement [```FieldInterface```](https://github.com/johnpancoast/data-migrator/blob/master/src/FieldInterface.php).
-
-Now the model is defining fields but if we were to run the migrator, there would *still* be no output. This is because although we've created the fields that define the I/O structures, we still haven't done anything with the data.
-  
-Following is a complete example.
+So you can see that to use the migrator, we just need to provide it with a model object and an iterator to iterate. But if we ran the above example, nothing would happen. This is because the model has nothing defined. The following is a complete (enough) example.
 
 ```php
 use Pancoast\DataMigrator\AbstractModel;
@@ -196,25 +143,11 @@ $migrator->run();
 
 ```
 
-We added the following 2 methods to ```MyClass```.
+Look at ```MyClass``` above. ```getFields()``` is now returning an array of fields which is the definition of the structure you're expecting from each iteration and how this data gets set from each iteration. The first 2 fields are ```ArrayIndexField``` which allow you to specify the array index, in an iteration of input, where a field can be retrieved from. The last field is a ```CallableField``` which allows you to pass a callable to specify how input for the field is determined. *There will be more fields available... it's only v0.2!*
 
-```
-public function endIteration($iterationCount, $iterationOutput)
-{
+You can create and use your own custom field classes. They just need to implement [```FieldInterface```](https://github.com/johnpancoast/data-migrator/blob/master/src/FieldInterface.php).
 
-    // perhaps we'd persist data here or add something to a transaction
-                                    
-    print_r($iterationOutput);
-}
-
-public function end()
-{
-
-    // perhaps we'd flush data here or commit a transaction
-    
-    echo "goodbye, world.\n";
-}
-```
+We also added 2 methods to ```MyClass```.
 
 The first, ```endIteration()```, gets executed at the end of each iteration and receives ```$iterationOutput```. This is an iteration of data in an array that matches the names of fields you defined in ```getFields()```. This is after validation has occurred on these fields (discussed below). The second method ```end()``` gets executed at the end of all iterations.
 
