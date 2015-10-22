@@ -25,7 +25,7 @@ abstract class AbstractModel implements ModelInterface
     /**
      * @inheritDoc
      */
-    public function createIterationInput($iterationCount, $iterationData)
+    public function createIterationInput(IterationDefinitionInterface $iterationDefinition, $iterationData)
     {
         return $iterationData;
     }
@@ -52,7 +52,7 @@ abstract class AbstractModel implements ModelInterface
      * @inheritDoc
      * @see ModelInterface::beginIteration()
      */
-    public function beginIteration($iterationCount, &$iterationInput, &$iterationOutput)
+    public function beginIteration(IterationDefinitionInterface $iterationDefinition, &$iterationInput, &$iterationOutput)
     {
         // nothing to do by default. override at will.
     }
@@ -61,7 +61,7 @@ abstract class AbstractModel implements ModelInterface
      * @inheritDoc
      * @see ModelInterface::endIteration()
      */
-    public function endIteration($iterationCount, $iterationOutput)
+    public function endIteration(IterationDefinitionInterface $iterationDefinition, $iterationOutput)
     {
         // nothing to do by default. override at will.
     }
@@ -69,7 +69,7 @@ abstract class AbstractModel implements ModelInterface
     /**
      * @inheritDoc
      */
-    public function handleIterationConstraintViolations($iterationCount, array $violationList)
+    public function handleIterationConstraintViolations(IterationDefinitionInterface $iterationDefinition, array $violationList)
     {
         $messages = [];
 

@@ -9,6 +9,7 @@
 namespace Pancoast\DataMigrator\Model;
 
 use Pancoast\DataMigrator\AbstractModel;
+use Pancoast\DataMigrator\IterationDefinitionInterface;
 
 /**
  * A CSV migration model
@@ -56,7 +57,7 @@ abstract class AbstractCsvModel extends AbstractModel
     /**
      * @inheritDoc
      */
-    public function createIterationInput($iterationCount, $iterationData)
+    public function createIterationInput(IterationDefinitionInterface $iterationDefinition, $iterationData)
     {
         return str_getcsv($iterationData, $this->delimiter, $this->enclosure, $this->escape);
     }

@@ -36,10 +36,11 @@ interface ModelInterface
      * This method is called after {@see self::begin()} and before {@see::self::beginIteration()} to define
      * the input data for this iteration.
      *
-     * @param int $iterationDefinition The definition of this iteration
+     * @param IterationDefinitionInterface $iterationDefinition The definition of this iteration
      * @param mixed $iterationData Data to create iteration input from
+     * @return
      */
-    public function createIterationInput(&$iterationDefinition, $iterationData);
+    public function createIterationInput(IterationDefinitionInterface $iterationDefinition, $iterationData);
 
     /**
      * Logic to run at the beginning of an iteration
@@ -51,11 +52,12 @@ interface ModelInterface
      * $iterationOutput will *always* be overwritten by internal logic handling field input
      * so take notice of the object properties you're setting.
      *
-     * @param int $iterationDefinition The definition of this iteration
+     * @param IterationDefinitionInterface $iterationDefinition The definition of this iteration
      * @param mixed $iterationInput Input data for this iteration created by {@see self::createIterationInput()}
      * @param array $iterationOutput Output data for this iteration
+     * @return
      */
-    public function beginIteration(&$iterationDefinition, &$iterationInput, &$iterationOutput);
+    public function beginIteration(IterationDefinitionInterface $iterationDefinition, &$iterationInput, &$iterationOutput);
 
     /**
      * Logic to run at the end of an iteration
@@ -64,10 +66,11 @@ interface ModelInterface
      * matching those defined in {@see self::getFields()}. This method is useful for handling the end
      * of each iteration. Adding something to a transaction is an examples of something you might do here.
      *
-     * @param int $iterationDefinition The definition of this iteration
+     * @param IterationDefinitionInterface $iterationDefinition The definition of this iteration
      * @param $iterationOutput Iteration output after field input and validation have occurred
+     * @return
      */
-    public function endIteration(&$iterationDefinition, $iterationOutput);
+    public function endIteration(IterationDefinitionInterface $iterationDefinition, $iterationOutput);
 
     /**
      * Logic to run after all iterations
@@ -82,11 +85,9 @@ interface ModelInterface
      * This method can throw certain exceptions to effect the behavior of future iterations. See @#throws
      * docs below.
      *
-     * @param int $iterationDefinition The definition of this iteration
+     * @param IterationDefinitionInterface $iterationDefinition The definition of this iteration
      * @param FieldViolationException[] An array of {@see FieldViolationException}.
-     * @throws HaltableModelIterationException Which will halt iterating in the migrator
-     * @throws SilentModelIterationException Which will let iterating continue in the migrator
-     * @return void
+     * @return
      */
-    public function handleIterationConstraintViolations(&$iterationDefinition, array $violationList);
+    public function handleIterationConstraintViolations(IterationDefinitionInterface $iterationDefinition, array $violationList);
 }
