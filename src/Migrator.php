@@ -127,23 +127,32 @@ class Migrator implements MigratorInterface
      */
     protected function handleIteration($iterationInput)
     {
-        // input that gets passed to fields in user model
-        $iterationInput = $this->model->createIterationInput($this->iterationDefinition, $iterationInput);
-
         // output that gets handled in user model
         $iterationOutput = [];
 
-        // collection of field exceptions for this iteration
-        $fieldViolationList = [];
-
-        // check if this iteration should still run after model createIterationInput() call above.
-        if ($this->iterationDefinition->isSkippedIteration() || !$this->iterationDefinition->isContinuingIteration()) {
-            return;
-        }
-
         try {
 
-            $this->model->beginIteration($this->iterationDefinition, $iterationInput, $iterationOutput);
+            // attempt to set the input for this iteration, let model handle exception otherwise
+            try {
+                $iterationInput = $this->model->createIterationInput($this->iterationDefinition, $iterationInput);
+            } catch (\Exception $e) {
+                $this->model->handleIterationException($e);
+            }
+
+            // collection of field exceptions for this iteration
+            $fieldViolationList = [];
+
+            // check if this iteration should still run after model createIterationInput() call above.
+            if ($this->iterationDefinition->isSkippedIteration() || !$this->iterationDefinition->isContinuingIteration()) {
+                return;
+            }
+
+            // attempt to begin iteration, let model handle exception otherwise
+            try {
+                $this->model->beginIteration($this->iterationDefinition, $iterationInput, $iterationOutput);
+            } catch (\Exception $e) {
+                $this->model->handleIterationException();
+            }
 
             // check if iteration should still run after model iteration handling began
             if ($this->iterationDefinition->isSkippedIteration() || !$this->iterationDefinition->isContinuingIteration()) {
@@ -180,7 +189,11 @@ class Migrator implements MigratorInterface
             }
 
             if (!empty($fieldViolationList)) {
-                $this->model->handleIterationConstraintViolations($this->iterationDefinition, $fieldViolationList);
+                try {
+                    $this->model->handleIterationConstraintViolations($this->iterationDefinition, $fieldViolationList);
+                } catch (\Exception $e) {
+                    $this->model->handleIterationException($this->iterationDefinition, $e);
+                }
 
                 // check if iteration should still run after model handled constraint violation
                 if ($this->iterationDefinition->isSkippedIteration() || !$this->iterationDefinition->isContinuingIteration()) {
@@ -194,7 +207,14 @@ class Migrator implements MigratorInterface
             $this->iterationExceptions[$this->iterationCount] = $e;
         }
 
-        $this->model->endIteration($this->iterationDefinition, $iterationOutput);
+        // must be called *after* we catch skippable model iteration exceptions above so that we can attempt
+        // to end the iteration nicely in skippable situations. However, we also need this with its own catch
+        // in case it *also* throws its own skippable.
+        try {
+            $this->model->endIteration($this->iterationDefinition, $iterationOutput);
+        } catch (SkippableModelIterationException $e) {
+            $this->iterationExceptions[$this->iterationCount] = $e;
+        }
     }
 
     /**

@@ -9,6 +9,7 @@
 namespace Pancoast\DataMigrator;
 
 use Pancoast\DataMigrator\Exception\HaltableModelIterationException;
+use Pancoast\DataMigrator\Exception\IterationConstraintViolationException;
 
 /**
  * Abstract migration model
@@ -77,12 +78,21 @@ abstract class AbstractModel implements ModelInterface
             $messages[] = sprintf('[%s] - %s', $violation->getFieldName(), $violation->getMessage());
         }
 
+        throw new IterationConstraintViolationException(implode(', ', $messages));
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function handleIterationException(IterationDefinitionInterface $iterationDefinition, \Exception $exception)
+    {
         throw new HaltableModelIterationException(
             sprintf(
-                'The following field errors occurred in iteration %s: %s',
-                $iterationDefinition->getIterationCount(),
-                implode(', ', $messages)
-            )
+                'Iteration %s encountered an exception',
+                $iterationDefinition->getIterationCount()
+            ),
+            0,
+            $exception
         );
     }
 }

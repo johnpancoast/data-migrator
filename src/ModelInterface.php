@@ -90,4 +90,13 @@ interface ModelInterface
      * @return
      */
     public function handleIterationConstraintViolations(IterationDefinitionInterface $iterationDefinition, array $violationList);
+
+    /**
+     * Handle an exception encountered in an iteration
+     *
+     * @param IterationDefinitionInterface $iterationDefinition
+     * @param \Exception $exception
+     * @return mixed
+     */
+    public function handleIterationException(IterationDefinitionInterface $iterationDefinition, \Exception $exception);
 }
