@@ -80,7 +80,7 @@ abstract class AbstractModel implements ModelInterface
         throw new HaltableModelIterationException(
             sprintf(
                 'The following field errors occurred in iteration %s: %s',
-                $iterationCount,
+                $iterationDefinition->getIterationCount(),
                 implode(', ', $messages)
             )
         );
