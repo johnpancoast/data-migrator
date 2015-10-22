@@ -36,10 +36,11 @@ class CallableField extends AbstractField
      * @param $name
      * @param array $constraints
      * @param callable $handler
+     * @param mixed $defaultValue Default value if field is empty
      */
-    public function __construct($name, array $constraints, callable $handler)
+    public function __construct($name, array $constraints, callable $handler, $defaultValue = '')
     {
-        parent::__construct($name, $constraints);
+        parent::__construct($name, $constraints, $defaultValue);
         $this->handler = $handler;
     }
 

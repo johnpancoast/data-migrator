@@ -30,6 +30,11 @@ abstract class AbstractField implements FieldInterface
     protected $constraints = [];
 
     /**
+     * @var mixed
+     */
+    protected $defaultValue = '';
+
+    /**
      * @inheritDoc
      */
     abstract public function extractValue($iterationInput);
@@ -41,15 +46,17 @@ abstract class AbstractField implements FieldInterface
      *
      * @param $name
      * @param array $constraints
+     * @param mixed $defaultValue Default value if value is empty
      */
-    public function __construct($name, array $constraints)
+    public function __construct($name, array $constraints, $defaultValue = '')
     {
         $this->setName($name);
         $this->setConstraints($constraints);
+        $this->setDefaultValue($defaultValue);
     }
 
     /**
-     * @return string
+     * @inheritDoc
      */
     public function getName()
     {
@@ -57,8 +64,7 @@ abstract class AbstractField implements FieldInterface
     }
 
     /**
-     * @param string $name
-     * @return $this
+     * @inheritDoc
      */
     public function setName($name)
     {
@@ -67,7 +73,7 @@ abstract class AbstractField implements FieldInterface
     }
 
     /**
-     * @return \Symfony\Component\Validator\Constraint[]
+     * @inheritDoc
      */
     public function getConstraints()
     {
@@ -75,8 +81,7 @@ abstract class AbstractField implements FieldInterface
     }
 
     /**
-     * @param \Symfony\Component\Validator\Constraint[] $constraints
-     * @return $this
+     * @inheritDoc
      */
     public function setConstraints(array $constraints)
     {
@@ -86,7 +91,23 @@ abstract class AbstractField implements FieldInterface
 
     /**
      * @inheritDoc
-     * @throws FieldViolationException
+     */
+    public function setDefaultValue($defaultValue = '')
+    {
+        $this->defaultValue = $defaultValue;
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getDefaultValue()
+    {
+        return $this->defaultValue;
+    }
+
+    /**
+     * @inheritDoc
      */
     public function handleConstraintViolations(ConstraintViolationListInterface $violations)
     {

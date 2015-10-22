@@ -153,8 +153,10 @@ class Migrator implements MigratorInterface
             foreach ($this->model->getFields() as $field) {
                 $name = $field->getName();
 
-                // set value of output field by extracting using field
-                $iterationOutput[$name] = $field->extractValue($iterationInput);
+                // set value of this field using extraction method.
+                // if empty use default.
+                $fieldValue = $field->extractValue($iterationInput);
+                $iterationOutput[$name] = !empty($fieldValue) ? $fieldValue : $field->getDefaultValue();
 
                 $violations = $this->validator->validateValue(
                     $iterationOutput[$name],

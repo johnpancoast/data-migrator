@@ -49,6 +49,20 @@ interface FieldInterface
     public function extractValue($iterationInput);
 
     /**
+     * Default value if field is empty
+     *
+     * @param string $defaultValue
+     * @return $this
+     */
+    public function setDefaultValue($defaultValue = '');
+
+    /**
+     * Get default value
+     * @return mixed
+     */
+    public function getDefaultValue();
+
+    /**
      * Handle constraint violations
      *
      * @param ConstraintViolationListInterface $violations

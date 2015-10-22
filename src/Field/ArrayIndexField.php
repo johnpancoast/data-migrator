@@ -26,9 +26,9 @@ class ArrayIndexField extends AbstractField
      * @inheritDoc
      * @param int $fieldIndex Position of this field in an iteration of input data
      */
-    public function __construct($name, array $constraints, $fieldIndex)
+    public function __construct($name, array $constraints, $fieldIndex, $defaultValue = '')
     {
-        parent::__construct($name, $constraints);
+        parent::__construct($name, $constraints, $defaultValue);
         $this->fieldIndex = $fieldIndex;
     }
 
@@ -37,6 +37,6 @@ class ArrayIndexField extends AbstractField
      */
     public function extractValue($iterationInput)
     {
-        return $iterationInput[$this->fieldIndex];
+        return isset($iterationInput[$this->fieldIndex]) ? $iterationInput[$this->fieldIndex] : '';
     }
 }
