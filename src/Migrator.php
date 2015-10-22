@@ -136,7 +136,7 @@ class Migrator implements MigratorInterface
             try {
                 $iterationInput = $this->model->createIterationInput($this->iterationDefinition, $iterationInput);
             } catch (\Exception $e) {
-                $this->model->handleIterationException($e);
+                $this->model->handleIterationException($this->iterationDefinition, $e);
             }
 
             // collection of field exceptions for this iteration
@@ -151,7 +151,7 @@ class Migrator implements MigratorInterface
             try {
                 $this->model->beginIteration($this->iterationDefinition, $iterationInput, $iterationOutput);
             } catch (\Exception $e) {
-                $this->model->handleIterationException();
+                $this->model->handleIterationException($this->iterationDefinition, $e);
             }
 
             // check if iteration should still run after model iteration handling began
