@@ -178,7 +178,7 @@ class Migrator implements MigratorInterface
             }
 
             if (!empty($fieldViolationList)) {
-                $this->model->handleIterationConstraintViolations($this->iterationCount, $fieldViolationList);
+                $this->model->handleIterationConstraintViolations($this->iterationDefinition, $fieldViolationList);
 
                 // check if iteration should still run after model handled constraint violation
                 if ($this->iterationDefinition->isSkippedIteration() || !$this->iterationDefinition->isContinuingIteration()) {
@@ -192,7 +192,7 @@ class Migrator implements MigratorInterface
             $this->iterationExceptions[$this->iterationCount] = $e;
         }
 
-        $this->model->endIteration($this->iterationCount, $iterationOutput);
+        $this->model->endIteration($this->iterationDefinition, $iterationOutput);
     }
 
     /**
