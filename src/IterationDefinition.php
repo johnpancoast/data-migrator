@@ -20,9 +20,9 @@ class IterationDefinition implements IterationDefinitionInterface
     private $iterationCount = 0;
 
     /**
-     * @var bool Do we continue with this iteration
+     * @var bool Are we currently iterating
      */
-    private $continueIterating = true;
+    private $isIterating = true;
 
     /**
      * @var array Collection of iterations to skip with the iteration number to skip as array key and bool as value
@@ -61,7 +61,7 @@ class IterationDefinition implements IterationDefinitionInterface
      */
     public function continueIterating()
     {
-        $this->continueIterating = true;
+        $this->isIterating = true;
     }
 
     /**
@@ -69,7 +69,7 @@ class IterationDefinition implements IterationDefinitionInterface
      */
     public function stopIterating()
     {
-        $this->continueIterating = false;
+        $this->isIterating = false;
     }
 
     /**
@@ -77,7 +77,7 @@ class IterationDefinition implements IterationDefinitionInterface
      */
     public function isContinuingIteration()
     {
-        return $this->continueIterating;
+        return $this->isIterating;
     }
 
     /**
