@@ -67,7 +67,7 @@ class Migrator implements MigratorInterface
             $this->setData($data);
         }
 
-        $this->iterationDefinition = new IterationDefinition(0, true);
+        $this->iterationDefinition = new IterationDefinition();
     }
 
     /**
