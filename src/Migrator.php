@@ -162,8 +162,7 @@ class Migrator implements MigratorInterface
         }
 
         // must be called *after* we catch skippable model iteration exceptions above so that we can attempt
-        // to end the iteration nicely in skippable situations. However, we also need this with its own catch
-        // in case it *also* throws its own skippable.
+        // to end the iteration nicely in skippable situations.
         $this->endIteration($iterationOutput);
     }
 
