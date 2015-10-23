@@ -17,27 +17,18 @@ class IterationDefinition implements IterationDefinitionInterface
     /**
      * @var int Count of current iteration
      */
-    private $iterationCount;
+    private $iterationCount = 0;
 
     /**
      * @var bool Do we continue with this iteration
      */
-    private $continueIterating;
+    private $continueIterating = true;
 
     /**
-     * @var array Collection of iterations to skip with the iteration number to skip as array key
+     * @var array Collection of iterations to skip with the iteration number to skip as array key and bool as value
+     * defining whether to skip.
      */
-    private $skippedIterations;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->iterationCount = 0;
-        $this->skippedIterations = [];
-        $this->continueIterating = true;
-    }
+    private $skippedIterations = [];
 
     /**
      * @inheritDoc
