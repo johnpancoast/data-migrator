@@ -150,7 +150,7 @@ class Migrator implements MigratorInterface
             // create output for this iteration
             $iterationOutput = $this->createIterationOutput($iterationInput, $iterationOutput);
 
-            // check if iteration should still run after creating outout
+            // check if iteration should still run after creating output
             if ($this->iterationDefinition->isSkippedIteration() || !$this->iterationDefinition->isContinuingIteration()) {
                 return;
             }
