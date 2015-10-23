@@ -107,11 +107,11 @@ class Migrator implements MigratorInterface
 
         $this->model->begin();
 
-        if ($this->iterationDefinition->isContinuingIteration()) {
+        if ($this->iterationDefinition->isIterating()) {
             foreach ($this->data as $iterationInput) {
                 $this->iterationDefinition->incrementIteration();
 
-                if (!$this->iterationDefinition->isContinuingIteration() || $this->iterationDefinition->isSkippedIteration()) {
+                if (!$this->iterationDefinition->isIterating() || $this->iterationDefinition->isSkippedIteration()) {
                     continue;
                 }
 
@@ -135,7 +135,7 @@ class Migrator implements MigratorInterface
             $iterationInput = $this->createIterationInput($iterationInput);
 
             // check if this iteration should still run after createIterationInput() call above.
-            if ($this->iterationDefinition->isSkippedIteration() || !$this->iterationDefinition->isContinuingIteration()) {
+            if ($this->iterationDefinition->isSkippedIteration() || !$this->iterationDefinition->isIterating()) {
                 return;
             }
 
@@ -143,7 +143,7 @@ class Migrator implements MigratorInterface
             $this->beginIteration($iterationInput, $iterationOutput);
 
             // check if iteration should still run after we began iteration
-            if ($this->iterationDefinition->isSkippedIteration() || !$this->iterationDefinition->isContinuingIteration()) {
+            if ($this->iterationDefinition->isSkippedIteration() || !$this->iterationDefinition->isIterating()) {
                 return;
             }
 
@@ -151,7 +151,7 @@ class Migrator implements MigratorInterface
             $iterationOutput = $this->createIterationOutput($iterationInput, $iterationOutput);
 
             // check if iteration should still run after creating output
-            if ($this->iterationDefinition->isSkippedIteration() || !$this->iterationDefinition->isContinuingIteration()) {
+            if ($this->iterationDefinition->isSkippedIteration() || !$this->iterationDefinition->isIterating()) {
                 return;
             }
 

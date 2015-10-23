@@ -54,7 +54,7 @@ interface IterationDefinitionInterface
      *
      * @return bool
      */
-    public function isContinuingIteration();
+    public function isIterating();
 
     /**
      * Skip the current iteration or the iteration count of the passed param

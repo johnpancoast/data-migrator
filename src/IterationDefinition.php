@@ -75,7 +75,7 @@ class IterationDefinition implements IterationDefinitionInterface
     /**
      * @inheritDoc
      */
-    public function isContinuingIteration()
+    public function isIterating()
     {
         return $this->isIterating;
     }
