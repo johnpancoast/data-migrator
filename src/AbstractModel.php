@@ -88,7 +88,7 @@ abstract class AbstractModel implements ModelInterface
     {
         throw new HaltableModelIterationException(
             sprintf(
-                'Iteration %s encountered an exception',
+                'Validation failed for iteration %s',
                 $iterationDefinition->getIterationCount()
             ),
             0,
