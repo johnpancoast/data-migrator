@@ -15,7 +15,7 @@ namespace Pancoast\DataValidator;
  *
  * @author John Pancoast <johnpancoaster@gmail.com>
  */
-interface MigratorInterface
+interface DataValidatorInterface
 {
     /**
      * Set model

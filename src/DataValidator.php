@@ -14,13 +14,13 @@ use Symfony\Component\Validator\Validation;
 use Symfony\Component\Validator\Validator;
 
 /**
- * Data migrator
+ * Data validator
  *
  * This is the core public interface to interact with
  *
  * @author John Pancoast <johnpancoaster@gmail.com>
  */
-class Migrator implements MigratorInterface
+class DataValidator implements DataValidatorInterface
 {
     /**
      * @var ModelInterface
