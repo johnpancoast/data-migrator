@@ -1,14 +1,14 @@
 <?php
 /**
- * @package johnpancoast/model-validator
+ * @package johnpancoast/data-validator
  * @copyright (c) 2015 John Pancoast
  * @author John Pancoast <johnpancoaster@gmail.com>
  * @license MIT
  */
 
-namespace Pancoast\ModelValidator\Field;
+namespace Pancoast\DataValidator\Field;
 
-use Pancoast\ModelValidator\AbstractField;
+use Pancoast\DataValidator\AbstractField;
 
 /**
  * A model field allowing a passed in array index to be used in field value extraction

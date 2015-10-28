@@ -1,14 +1,14 @@
 <?php
 /**
- * @package johnpancoast/model-validator
+ * @package johnpancoast/data-validator
  * @copyright (c) 2015 John Pancoast
  * @author John Pancoast <johnpancoaster@gmail.com>
  * @license MIT
  */
 
-namespace Pancoast\ModelValidator;
+namespace Pancoast\DataValidator;
 
-use Pancoast\ModelValidator\Exception\FieldViolationException;
+use Pancoast\DataValidator\Exception\FieldViolationException;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
 
 /**

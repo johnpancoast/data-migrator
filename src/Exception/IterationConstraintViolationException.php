@@ -5,7 +5,7 @@
  * @author John Pancoast <jpancoast@mindgruve.com>
  */
 
-namespace Pancoast\ModelValidator\Exception;
+namespace Pancoast\DataValidator\Exception;
 
 /**
  * Exceptions thrown during an iteration

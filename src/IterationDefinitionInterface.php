@@ -5,7 +5,7 @@
  * @author John Pancoast <jpancoast@mindgruve.com>
  */
 
-namespace Pancoast\ModelValidator;
+namespace Pancoast\DataValidator;
 
 /**
  * Contract for an iteration definition which defines one iteration
