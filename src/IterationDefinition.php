@@ -5,7 +5,7 @@
  * @author John Pancoast <jpancoast@mindgruve.com>
  */
 
-namespace Pancoast\DataMigrator;
+namespace Pancoast\ModelValidator;
 
 /**
  * Iteration definition

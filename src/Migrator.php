@@ -1,15 +1,15 @@
 <?php
 /**
- * @package johnpancoast/data-migrator
+ * @package johnpancoast/model-validator
  * @copyright (c) 2015 John Pancoast
  * @author John Pancoast <johnpancoaster@gmail.com>
  * @license MIT
  */
 
-namespace Pancoast\DataMigrator;
+namespace Pancoast\ModelValidator;
 
-use Pancoast\DataMigrator\Exception\FieldViolationException;
-use Pancoast\DataMigrator\Exception\SkippableModelIterationException;
+use Pancoast\ModelValidator\Exception\FieldViolationException;
+use Pancoast\ModelValidator\Exception\SkippableModelIterationException;
 use Symfony\Component\Validator\Validation;
 use Symfony\Component\Validator\Validator;
 

@@ -1,15 +1,15 @@
 <?php
 /**
- * @package johnpancoast/data-migrator
+ * @package johnpancoast/model-validator
  * @copyright (c) 2015 John Pancoast
  * @author John Pancoast <johnpancoaster@gmail.com>
  * @license MIT
  */
 
-namespace Pancoast\DataMigrator\Model;
+namespace Pancoast\ModelValidator\Model;
 
-use Pancoast\DataMigrator\AbstractModel;
-use Pancoast\DataMigrator\IterationDefinitionInterface;
+use Pancoast\ModelValidator\AbstractModel;
+use Pancoast\ModelValidator\IterationDefinitionInterface;
 
 /**
  * A CSV migration model

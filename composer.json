@@ -1,6 +1,6 @@
 {
-  "name": "johnpancoast/data-migrator",
-  "description": "A PHP lib providing abstractions and structure to migrate data from an input to an output",
+  "name": "johnpancoast/model-validator",
+  "description": "A PHP lib providing you with a structure to validate your data",
   "license": "mit",
   "authors": [
     {
@@ -13,6 +13,6 @@
     "symfony/validator": "~2.3.0"
   },
   "autoload": {
-    "psr-4": { "Pancoast\\DataMigrator\\": "src" }
+    "psr-4": { "Pancoast\\ModelValidator\\": "src" }
   }
 }

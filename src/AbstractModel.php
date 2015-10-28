@@ -1,15 +1,15 @@
 <?php
 /**
- * @package johnpancoast/data-migrator
+ * @package johnpancoast/model-validator
  * @copyright (c) 2015 John Pancoast
  * @author John Pancoast <johnpancoaster@gmail.com>
  * @license MIT
  */
 
-namespace Pancoast\DataMigrator;
+namespace Pancoast\ModelValidator;
 
-use Pancoast\DataMigrator\Exception\HaltableModelIterationException;
-use Pancoast\DataMigrator\Exception\IterationConstraintViolationException;
+use Pancoast\ModelValidator\Exception\HaltableModelIterationException;
+use Pancoast\ModelValidator\Exception\IterationConstraintViolationException;
 
 /**
  * Abstract migration model

@@ -1,14 +1,14 @@
 <?php
 /**
- * @package johnpancoast/data-migrator
+ * @package johnpancoast/model-validator
  * @copyright (c) 2015 John Pancoast
  * @author John Pancoast <johnpancoaster@gmail.com>
  * @license MIT
  */
 
-namespace Pancoast\DataMigrator\Field;
+namespace Pancoast\ModelValidator\Field;
 
-use Pancoast\DataMigrator\AbstractField;
+use Pancoast\ModelValidator\AbstractField;
 
 /**
  * A model field accepting a callable to be used in field value extraction
@@ -21,7 +21,7 @@ class CallableField extends AbstractField
      * Callable for handling logic to retrieve data for this field from
      * an iteration of input data
      *
-     * This callable should share the same signature as {@see Pancoast\DataMigrator\FieldInterface::extractValue()}.
+     * This callable should share the same signature as {@see Pancoast\ModelValidator\FieldInterface::extractValue()}.
      *
      *    @#param mixed $iterationInput One iteration of input to pull the specific value from
      *    @#return mixed The value to be assigned to the field

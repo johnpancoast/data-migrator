@@ -1,14 +1,14 @@
 <?php
 /**
- * @package johnpancoast/data-migrator
+ * @package johnpancoast/model-validator
  * @copyright (c) 2015 John Pancoast
  * @author John Pancoast <johnpancoaster@gmail.com>
  * @license MIT
  */
 
-namespace Pancoast\DataMigrator\Field;
+namespace Pancoast\ModelValidator\Field;
 
-use Pancoast\DataMigrator\AbstractField;
+use Pancoast\ModelValidator\AbstractField;
 
 /**
  * A model field allowing a passed in array index to be used in field value extraction

@@ -1,12 +1,12 @@
 <?php
 /**
- * @package johnpancoast/data-migrator
+ * @package johnpancoast/model-validator
  * @copyright (c) 2015 John Pancoast
  * @author John Pancoast <johnpancoaster@gmail.com>
  * @license MIT
  */
 
-namespace Pancoast\DataMigrator\Exception;
+namespace Pancoast\ModelValidator\Exception;
 
 /**
  * A model iteration exception that will cause iterating to stop
