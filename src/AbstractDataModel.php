@@ -18,11 +18,11 @@ use Symfony\Component\PropertyAccess\PropertyAccessor;
 use Symfony\Component\Validator\Validation;
 
 /**
- * Abstract validation model
+ * Abstract data model
  *
  * @author John Pancoast <johnpancoaster@gmail.com>
  */
-abstract class AbstractModel implements ModelInterface
+abstract class AbstractDataModel implements DataModelInterface
 {
     /**
      * @var FieldInterface[] Traversable of field objects

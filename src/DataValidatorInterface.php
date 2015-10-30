@@ -22,9 +22,9 @@ interface DataValidatorInterface
      *
      * A model defines the fields used in a data transfer
      *
-     * @param ModelInterface $model
+     * @param DataModelInterface $model
      */
-    public function setModel(ModelInterface $model);
+    public function setModel(DataModelInterface $model);
 
     /**
      * Set all field's values

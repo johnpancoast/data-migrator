@@ -24,7 +24,7 @@ use Symfony\Component\Validator\Validator;
 class DataValidator implements DataValidatorInterface
 {
     /**
-     * @var ModelInterface
+     * @var DataModelInterface
      */
     protected $model;
 
@@ -35,9 +35,9 @@ class DataValidator implements DataValidatorInterface
 
     /**
      * Constructor
-     * @param ModelInterface $model|null
+     * @param DataModelInterface $model|null
      */
-    public function __construct(ModelInterface $model = null, $values = null)
+    public function __construct(DataModelInterface $model = null, $values = null)
     {
         if ($model) {
             $this->setModel($model);
@@ -51,7 +51,7 @@ class DataValidator implements DataValidatorInterface
     /**
      * @inheritDoc
      */
-    public function setModel(ModelInterface $model)
+    public function setModel(DataModelInterface $model)
     {
         $this->model = $model;
     }

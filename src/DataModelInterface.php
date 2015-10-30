@@ -13,7 +13,7 @@ namespace Pancoast\DataValidator;
  *
  * @author John Pancoast <johnpancoaster@gmail.com>
  */
-interface ModelInterface
+interface DataModelInterface
 {
     /**
      * Get model's fields
