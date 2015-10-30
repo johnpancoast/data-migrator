@@ -1,6 +1,6 @@
 <?php
 /**
- * @package johnpancoast/data-validator
+ * @package spamroast/data-validator
  * @copyright (c) 2015 John Pancoast
  * @author John Pancoast <johnpancoaster@gmail.com>
  * @license MIT
@@ -9,10 +9,10 @@
 namespace Pancoast\DataValidator\Exception;
 
 /**
- * A model iteration exception that will cause iterating to stop
+ * Pancoast\DataValidator\Exception\UnknownFieldException
  *
  * @author John Pancoast <johnpancoaster@gmail.com>
  */
-class HaltableModelIterationException extends \Exception
+class UnknownFieldException extends \Exception
 {
 }

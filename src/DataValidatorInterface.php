@@ -27,14 +27,53 @@ interface DataValidatorInterface
     public function setModel(ModelInterface $model);
 
     /**
-     * Set data to iterate over
-     * @param \Iterator $data
+     * Set all field's values
+     *
+     * @param mixed $values
      * @return $this
      */
-    public function setData(\Iterator $data);
+    public function setValues($values);
+
+    /**
+     * Get values
+     *
+     * @return array
+     */
+    public function getValues();
+
+    /**
+     * Set field value
+     *
+     * @param $field
+     * @param $value
+     * @return $this
+     */
+    public function setValue($field, $value);
+
+    /**
+     * Get field value
+     *
+     * @param $field
+     * @return mixed
+     */
+    public function getValue($field);
+
+    /**
+     * Get field
+     *
+     * @param $field
+     * @return FieldInterface
+     */
+    public function getField($field);
+
+    /**
+     * Get fields
+     * @return FieldInterface[] Traversable fields
+     */
+    public function getFields();
 
     /**
      * Core logic
      */
-    public function run();
+    public function validate();
 }

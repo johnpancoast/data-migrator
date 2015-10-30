@@ -25,6 +25,12 @@ abstract class AbstractField implements FieldInterface
     protected $name;
 
     /**
+     * Field value
+     * @var mixed
+     */
+    protected $value;
+
+    /**
      * @var \Symfony\Component\Validator\Constraint[] $constraints An array of symfony validator constraints
      */
     protected $constraints = [];
@@ -37,7 +43,7 @@ abstract class AbstractField implements FieldInterface
     /**
      * @inheritDoc
      */
-    abstract public function extractValue($iterationInput);
+    abstract public function extractValue($values);
 
     /**
      * Constructor
@@ -69,6 +75,23 @@ abstract class AbstractField implements FieldInterface
     public function setName($name)
     {
         $this->name = $name;
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getValue()
+    {
+        return $this->value;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setValue($value)
+    {
+        $this->value = $value;
         return $this;
     }
 
@@ -112,6 +135,6 @@ abstract class AbstractField implements FieldInterface
     public function handleConstraintViolations(ConstraintViolationListInterface $violations)
     {
         // Our lib does nothing for a failed field at this layer. Override at will but if throwing exceptions,
-        // see internals at {@see Migrator::handleIteration()}.
+        // see internals at {@see DataValidator::handleIteration()}.
     }
 }

@@ -9,18 +9,25 @@
 namespace Pancoast\DataValidator\Field;
 
 use Pancoast\DataValidator\AbstractField;
+use Symfony\Component\PropertyAccess\PropertyAccess;
 
 /**
- * A model field allowing a passed in array index to be used in field value extraction
+ * A field allowing you to specify a property path
  *
  * @author John Pancoast <johnpancoaster@gmail.com>
+ * @see https://github.com/symfony/property-access
  */
-class ArrayIndexField extends AbstractField
+class PropertyField extends AbstractField
 {
     /**
      * @var int Position of this field in an iteration of input data
      */
     private $fieldIndex;
+
+    /**
+     * @var PropertyAccessor
+     */
+    private $propertyAccessor;
 
     /**
      * @inheritDoc
@@ -30,13 +37,22 @@ class ArrayIndexField extends AbstractField
     {
         parent::__construct($name, $constraints, $defaultValue);
         $this->fieldIndex = $fieldIndex;
+        $this->propertyAccessor = PropertyAccess::createPropertyAccessor();
     }
 
     /**
      * @inheritDoc
      */
-    public function extractValue($iterationInput)
+    public function extractValue($values)
     {
-        return isset($iterationInput[$this->fieldIndex]) ? $iterationInput[$this->fieldIndex] : '';
+        if (is_int($this->fieldIndex)) {
+            $str = sprintf('[%s]', $this->fieldIndex);
+        } elseif (is_string($this->fieldIndex)) {
+            $str = $this->fieldIndex;
+        } else {
+            throw new \LogicException('Property path must be a string or int');
+        }
+
+        return $this->propertyAccessor->getValue($values, $str);
     }
 }

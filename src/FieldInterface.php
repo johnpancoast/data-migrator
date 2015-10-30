@@ -31,6 +31,20 @@ interface FieldInterface
     public function setName($name);
 
     /**
+     * Get value
+     * @return mixed
+     */
+    public function getValue();
+
+    /**
+     * Set value
+     *
+     * @param mixed $value
+     * @return $this
+     */
+    public function setValue($value);
+
+    /**
      * @return \Symfony\Component\Validator\Constraint[] An array of symfony validator constraints
      */
     public function getConstraints();
@@ -39,14 +53,6 @@ interface FieldInterface
      * @param \Symfony\Component\Validator\Constraint[] $constraints An array of symfony validator constraints
      */
     public function setConstraints(array $constraints);
-
-    /**
-     * Given one iteration of input, get the value for this field
-     *
-     * @param mixed $iterationInput One iteration of input to pull the specific value from
-     * @return mixed The value to be assigned to the field
-     */
-    public function extractValue($iterationInput);
 
     /**
      * Default value if field is empty
@@ -61,6 +67,14 @@ interface FieldInterface
      * @return mixed
      */
     public function getDefaultValue();
+
+    /**
+     * Given a set of values, extract the value for this field
+     *
+     * @param $values
+     * @return mixed
+     */
+    public function extractValue($values);
 
     /**
      * Handle constraint violations

@@ -10,89 +10,172 @@ namespace Pancoast\DataValidator;
 
 use Pancoast\DataValidator\Exception\HaltableModelIterationException;
 use Pancoast\DataValidator\Exception\IterationConstraintViolationException;
+use Pancoast\DataValidator\Exception\UnknownFieldException;
+use Pancoast\DataValidator\Exception\ValidationException;
+use Symfony\Component\PropertyAccess\Exception\NoSuchPropertyException;
+use Symfony\Component\PropertyAccess\PropertyAccess;
+use Symfony\Component\PropertyAccess\PropertyAccessor;
+use Symfony\Component\Validator\Validation;
 
 /**
- * Abstract migration model
+ * Abstract validation model
  *
  * @author John Pancoast <johnpancoaster@gmail.com>
  */
 abstract class AbstractModel implements ModelInterface
 {
     /**
-     * @inheritDoc
+     * @var FieldInterface[] Traversable of field objects
      */
-    abstract public function getFields();
+    private $fields;
+
+    /**
+     * @var Validator
+     */
+    private $validator;
+
+    /**
+     * @var PropertyAccessor
+     */
+    private $accessor;
 
     /**
      * @inheritDoc
      */
-    public function createIterationInput(IterationDefinitionInterface $iterationDefinition, $iterationData)
-    {
-        return $iterationData;
-    }
+    abstract public function getFieldDefinitions();
 
     /**
-     * @inheritDoc
-     * @see ModelInterface::begin()
+     * Construct
      */
-    public function begin()
+    public function __construct()
     {
-        // nothing to do by default. override at will.
-    }
-
-    /**
-     * @inheritDoc
-     * @see ModelInterface::end()
-     */
-    public function end()
-    {
-        // nothing to do by default. override at will.
-    }
-
-    /**
-     * @inheritDoc
-     * @see ModelInterface::beginIteration()
-     */
-    public function beginIteration(IterationDefinitionInterface $iterationDefinition, &$iterationInput, &$iterationOutput)
-    {
-        // nothing to do by default. override at will.
-    }
-
-    /**
-     * @inheritDoc
-     * @see ModelInterface::endIteration()
-     */
-    public function endIteration(IterationDefinitionInterface $iterationDefinition, $iterationOutput)
-    {
-        // nothing to do by default. override at will.
+        $this->accessor = PropertyAccess::createPropertyAccessor();
+        $this->initFields();
     }
 
     /**
      * @inheritDoc
      */
-    public function handleIterationConstraintViolations(IterationDefinitionInterface $iterationDefinition, array $violationList)
+    public function setValues($values)
     {
-        $messages = [];
+        foreach ($this->fields as $f) {
+            $f->setValue($f->getName(), $f->extractValue($values));
+        }
+    }
 
-        foreach ($violationList as $violation) {
-            $messages[] = sprintf('[%s] - %s', $violation->getFieldName(), $violation->getMessage());
+    /**
+     * @inheritDoc
+     */
+    public function setValue($field, $value)
+    {
+        $this->checkIsValidField($field);
+
+        $this->fields[$field]->setValue($value);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getValue($field)
+    {
+        $this->checkIsValidField($field);
+
+        return $this->fields[$field]->getValue($field);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getValues()
+    {
+        $return = [];
+
+        foreach ($this->fields as $field) {
+            $return[$field->getName()] = $field->getValue();
         }
 
-        throw new IterationConstraintViolationException(implode(', ', $messages));
+        return $return;
     }
 
     /**
      * @inheritDoc
      */
-    public function handleIterationException(IterationDefinitionInterface $iterationDefinition, \Exception $exception)
+    public function getField($field)
     {
-        throw new HaltableModelIterationException(
-            sprintf(
-                'Validation failed for iteration %s',
-                $iterationDefinition->getIterationCount()
-            ),
-            0,
-            $exception
-        );
+        $this->checkIsValidField($field);
+
+        return $this->fields[$field];
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getFields()
+    {
+        return $this->fields;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function isValidField($field)
+    {
+        return isset($this->fields[$field]);
+    }
+
+    /**
+     * Checks if field is valid and throws if not
+     *
+     * @param $field
+     * @throws UnknownFieldException If field not valid
+     */
+    public function checkIsValidField($field)
+    {
+        if (!$this->isValidField($field)) {
+            throw new UnknownFieldException(sprintf('Unknown field "%s"', $field));
+        }
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function validate()
+    {
+        if (!$this->validator) {
+            $this->validator = Validation::createValidatorBuilder()
+                ->addMethodMapping('loadValidatorMetadata')
+                ->getValidator();
+        }
+
+        foreach ($this->getFields() as $field) {
+            $violations = $this->validator->validateValue(
+                $field->getValue(),
+                $field->getConstraints()
+            );
+
+            if (count($violations) > 0) {
+                $field->handleConstraintViolations($violations);
+
+                $fieldErrorMessages = [];
+
+                foreach ($violations as $violation) {
+                    $fieldErrorMessages[] = $violation->getMessage();
+                }
+
+                throw ValidationException::build($field, implode(', ', $fieldErrorMessages));
+            }
+        }
+    }
+
+    /**
+     * Initialize fields
+     */
+    private function initFields()
+    {
+        if (!$this->fields) {
+            $this->fields = $this->getFieldDefinitions();
+        }
     }
 }
