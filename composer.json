@@ -1,6 +1,6 @@
 {
-  "name": "johnpancoast/model-validator",
-  "description": "A PHP lib providing you with a structure to validate your data",
+  "name": "johnpancoast/data-validator",
+  "description": "A PHP lib providing a structure for validating data",
   "license": "mit",
   "authors": [
     {
