@@ -50,7 +50,7 @@ abstract class AbstractDataModel implements DataModelInterface
     public function __construct()
     {
         $this->accessor = PropertyAccess::createPropertyAccessor();
-        $this->initFields();
+        $this->fields = $this->getFieldDefinitions();
     }
 
     /**
@@ -166,16 +166,6 @@ abstract class AbstractDataModel implements DataModelInterface
 
                 throw ValidationException::build($field, implode(', ', $fieldErrorMessages));
             }
-        }
-    }
-
-    /**
-     * Initialize fields
-     */
-    private function initFields()
-    {
-        if (!$this->fields) {
-            $this->fields = $this->getFieldDefinitions();
         }
     }
 }
