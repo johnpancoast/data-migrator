@@ -45,7 +45,7 @@ class PropertyField extends AbstractField
      */
     public function extractValue($values)
     {
-        if (is_int($this->fieldIndex)) {
+        if (is_numeric($this->fieldIndex)) {
             $str = sprintf('[%s]', $this->fieldIndex);
         } elseif (is_string($this->fieldIndex)) {
             $str = $this->fieldIndex;
