@@ -59,7 +59,7 @@ abstract class AbstractDataModel implements DataModelInterface
     public function setValues($values)
     {
         foreach ($this->fields as $f) {
-            $f->setValue($f->getName(), $f->extractValue($values));
+            $f->setValue($f->extractValue($values));
         }
     }
 
