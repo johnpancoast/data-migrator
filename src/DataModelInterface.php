@@ -51,7 +51,7 @@ interface DataModelInterface
     /**
      * Get field values
      *
-     * @return array
+     * @return array Of field names as keys with their respective values
      */
     public function getValues();
 
