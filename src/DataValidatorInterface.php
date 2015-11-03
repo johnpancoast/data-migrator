@@ -27,6 +27,13 @@ interface DataValidatorInterface
     public function setModel(DataModelInterface $model);
 
     /**
+     * Get model
+     *
+     * @return DataModelInterface
+     */
+    public function getModel();
+
+    /**
      * Set all field's values
      *
      * @param mixed $values

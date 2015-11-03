@@ -59,6 +59,14 @@ class DataValidator implements DataValidatorInterface
     /**
      * @inheritDoc
      */
+    public function getModel()
+    {
+        return $this->model;
+    }
+
+    /**
+     * @inheritDoc
+     */
     public function setValue($field, $value)
     {
         $this->checkHasModel();
