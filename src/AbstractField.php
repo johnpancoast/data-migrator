@@ -8,7 +8,6 @@
 
 namespace Pancoast\DataValidator;
 
-use Pancoast\DataValidator\Exception\FieldViolationException;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
 
 /**
