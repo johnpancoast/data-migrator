@@ -50,7 +50,10 @@ abstract class AbstractDataModel implements DataModelInterface
     public function __construct()
     {
         $this->accessor = PropertyAccess::createPropertyAccessor();
-        $this->fields = $this->getFieldDefinitions();
+
+        foreach ($this->getFieldDefinitions() as $field) {
+            $this->fields[$field->getName()] = $field;
+        }
     }
 
     /**
