@@ -11,7 +11,7 @@ data-validator uses [composer](https://getcomposer.org/).
 To include it, either use [composer require](https://getcomposer.org/doc/03-cli.md#require)
  
 ```
-composer require johnpancoast/data-validator:~0.2.0
+composer require johnpancoast/data-validator:~0.4.0
 ```
 
 ... or require it in your project's composer file
@@ -19,7 +19,7 @@ composer require johnpancoast/data-validator:~0.2.0
 ```php
 {
     "require": {
-        "johnpancoast/data-validator": "~0.2.0",
+        "johnpancoast/data-validator": "~0.4.0",
     }
 }
 ```
